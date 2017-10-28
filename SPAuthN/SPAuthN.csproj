@@ -78,6 +78,7 @@
       <SubType>UserControl</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include=".nuspec" />
     <None Include="edge\x64\edge_nativeclr.node">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
