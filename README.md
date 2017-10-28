@@ -2,7 +2,7 @@
 
 The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.
 
-Allows authenticating in SharePoint in whatever you need scenarious, provides wizard-like approach for building and managing connection config files.
+Allows authenticating in SharePoint in whatever you need scenarios and provides a wizard-like approach for building and managing connection config files.
 
 ---
 
