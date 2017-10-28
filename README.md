@@ -6,8 +6,7 @@
 
 ---
 
-The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.
-
+The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.  
 
 Allows authenticating in SharePoint in whatever you need scenarios and provides a wizard-like approach for building and managing connection config files.
 
@@ -27,7 +26,7 @@ And definitely not for the situations when these work for you:
 
 - `context.Credentials = new SharePointOnlineCredentials("username", "securepass");`
 - `context.Credentials = new NetworkCredential("username", "password", "domain");`
-- Any other native authentication route.
+- Any other native authentication routes.
 
 ## Supported SharePoint versions
 
