@@ -1,0 +1,35 @@
+﻿<package>
+
+  <metadata>
+
+    <id>SPAuthN</id>
+    <version>1.0.0</version>
+    <title>SPAuthN</title>
+
+    <description>SharePoint .Net auth with Node.js</description>
+    <tags>sharepoint auth dotnet nodejs node-sp-auth</tags>
+
+    <releaseNotes>Experimental version</releaseNotes>
+
+    <authors>Andrew Koltyakov</authors>
+    <owners>Andrew Koltyakov</owners>
+    <copyright>Copyright 2017 Andrew Koltyakov</copyright>
+    <projectUrl>https://github.com/koltyakov/SPAuthN</projectUrl>
+
+    <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPAuthN/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    
+    <dependencies>
+      <dependency id="Edge.js" version="8.2.1" />
+    </dependencies>
+
+  </metadata>
+
+  <files>
+    <file src="..\..\SPAuthN\bin\Debug\SPAuthN.dll" target="lib\net45" />
+    <file src="..\..\SPAuthN\bin\Debug\SPAuthN.dll" target="lib\net45" />
+    <file src="..\..\SPAuthN\auth\**\*.*" target="content/auth" />
+    <file src=".\install.ps1" target="tools" />
+  </files>
+
+</package>
