@@ -1,9 +1,12 @@
 ﻿using System;
 
-namespace SPAuthN.Test {
+namespace SPAuthN.Test
+{
 
-    class Program {
-        static void Main(string[] args) {
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
             Headers authHeaders = SPAuth.GetAuth();
             Console.WriteLine(authHeaders);
