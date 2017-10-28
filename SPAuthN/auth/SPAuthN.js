@@ -20,6 +20,7 @@
                 return spAuth.getAuth(context.siteUrl, context.authOptions);
             })
             .then(options => {
+                // callback(null, options.headers);
                 callback(null, Object.keys(options.headers).map((prop) => {
                     return `${prop}::${options.headers[prop]}`;
                 }).join(';;'));
