@@ -24,8 +24,8 @@ For the cases when one tool should rule *all possible authentication strategies 
 
 And definitely not for the situations when these work for you:
 
-- `context.Credentials = new SharePointOnlineCredentials("username", "securepass");`
-- `context.Credentials = new NetworkCredential("username", "password", "domain");`
+- ```context.Credentials = new SharePointOnlineCredentials("username", "securepass");```
+- ```context.Credentials = new NetworkCredential("username", "password", "domain");```
 - Any other native authentication routes.
 
 ## Supported SharePoint versions
