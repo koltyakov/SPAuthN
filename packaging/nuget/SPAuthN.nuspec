@@ -7,13 +7,13 @@
     <title>SPAuthN</title>
 
     <description>SharePoint .Net auth with Node.js</description>
-    <tags>sharepoint auth dotnet nodejs node-sp-auth</tags>
+    <tags>sharepoint auth dotnet nodejs node-sp-auth crazystuff</tags>
 
     <releaseNotes>Experimental version</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>
-    <copyright>Copyright 2017, Andrew Koltyakov, ARVO Systems</copyright>
+    <copyright>Copyright 2017, ARVO Systems</copyright>
     <projectUrl>https://github.com/koltyakov/SPAuthN</projectUrl>
 
     <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPAuthN/master/LICENSE</licenseUrl>
