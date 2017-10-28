@@ -1,0 +1,1 @@
+nuget pack ../SPAuthN/SPAuthN.csproj

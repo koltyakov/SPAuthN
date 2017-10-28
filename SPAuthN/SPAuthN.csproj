@@ -60,6 +60,10 @@
     <Content Include="auth\utils\index.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="edge\double_edge.js" />
+    <Content Include="edge\edge.js" />
+    <Content Include="edge\x64\node.dll" />
+    <Content Include="edge\x86\node.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies.txt">
@@ -67,6 +71,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include=".nuspec" />
+    <None Include="edge\x64\edge_nativeclr.node" />
+    <None Include="edge\x86\edge_nativeclr.node" />
     <None Include="package.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
