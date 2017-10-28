@@ -1,5 +1,9 @@
 # SPAuthN - SharePoint .Net auth via Node.js
 
+[![NuGet version](https://img.shields.io/nuget/v/SPAuthN.svg)](https://www.nuget.org/packages/SPAuthN)
+[![Downloads](https://img.shields.io/nuget/dt/SPAuthN.svg)](https://www.nuget.org/packages/SPAuthN)
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sharepoint-node/Lobby)
+
 The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.
 
 Allows authenticating in SharePoint in whatever you need scenarios and provides a wizard-like approach for building and managing connection config files.
