@@ -23,7 +23,7 @@ namespace SPAuthN
         {
             if (NeedToInstall())
             {
-                File.Copy("auth/package.json", "package.json");
+                File.Copy("auth/package.json", "package.json", true);
                 CmdExecTask("npm install").Wait();
                 File.Delete("auth/Dependencies.txt");
                 File.Delete("package.json");
