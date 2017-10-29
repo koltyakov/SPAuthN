@@ -56,12 +56,12 @@ Install-Package SPAuthN
 ## How to use
 
 ```csharp
-Headers authHeaders = SPAuth.GetAuth();
+Options options = SPAuth.GetAuth();
 ```
 
 That's it! Really!
 
-Now `Headers` object contains Cookie or Authorization which can be injected to web requests.
+Now `options.headers` object contains Cookie or Authorization which can be injected to web requests.
 This is a low level, session timeouts should be controlled manually.
 
 ## First run
@@ -86,7 +86,7 @@ Password is stored as a secure string, it can be used only on the machine where 
 `GetAuth` method receives a string with arguments which are passed as initiators to [AuthConfigSettings](https://github.com/koltyakov/node-sp-auth-config/blob/master/src/interfaces/index.ts#L35).
 
 ```csharp
-Headers authHeaders = SPAuth.GetAuth("--encryptPassword=false --configPath='./config/private.uat.json'");
+Options options = SPAuth.GetAuth("--encryptPassword=false --configPath='./config/private.uat.json'");
 ```
 
 ### Arguments use cases
@@ -119,4 +119,54 @@ Headers authHeaders = SPAuth.GetAuth("--encryptPassword=false --configPath='./co
 
 ```bash
 --authOptions.siteUrl="http://sharepoint" --authOptions.username="user@contoso.com" --authOptions.password="p@ssw0rd" --saveConfigOnDisk=false
+```
+
+### Usage examples
+
+#### WebRequest
+
+```csharp
+Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
+WebRequest request = WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
+request.Headers = options.Headers;
+HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
+{
+  Stream dataStream = response.GetResponseStream();
+  XDocument xDoc = XDocument.Load(dataStream);
+
+  XNamespace ns = "http://www.w3.org/2005/Atom";
+  XNamespace d = "http://schemas.microsoft.com/ado/2007/08/dataservices";
+  XNamespace m = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
+
+  string title = xDoc
+    .Element(ns + "entry").Element(ns + "content")
+    .Element(m + "properties").Element(d + "Title").Value;
+
+  Console.WriteLine("REST | Web title is: {0}", title);
+  dataStream.Close();
+}
+response.Close();
+```
+
+#### CSOM
+
+```csharp
+Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
+using (ClientContext clientContext = new ClientContext(options.SiteUrl))
+{
+  clientContext.ExecutingWebRequest += (sender, arguments) =>
+  {
+    foreach (var key in options.Headers.AllKeys)
+    {
+      arguments.WebRequestExecutor.RequestHeaders[key] = options.Headers[key];
+    }
+  };
+
+  var web = clientContext.Web;
+  clientContext.Load(web);
+  clientContext.ExecuteQuery();
+
+  Console.WriteLine("CSOM | Web title is: {0}", web.Title);
+}
 ```
