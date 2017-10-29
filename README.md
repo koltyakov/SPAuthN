@@ -6,7 +6,7 @@
 
 ---
 
-The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.  
+The wrapper for [node-sp-auth](https://www.npmjs.com/package/node-sp-auth) and [node-sp-auth-config](https://www.npmjs.com/package/node-sp-auth-config) for usage in .Net assemblies.
 
 Allows authenticating in SharePoint in whatever you need scenarios and provides a wizard-like approach for building and managing connection config files.
 
@@ -24,8 +24,8 @@ For the cases when one tool should rule *all possible authentication strategies 
 
 And definitely not for the situations when these work for you:
 
-- ```context.Credentials = new SharePointOnlineCredentials("username", "securepass");```
-- ```context.Credentials = new NetworkCredential("username", "password", "domain");```
+- context.Credentials = new SharePointOnlineCredentials("username", "securepass");
+- context.Credentials = new NetworkCredential("username", "password", "domain");
 - Any other native authentication routes.
 
 ## Supported SharePoint versions
@@ -63,3 +63,60 @@ That's it! Really!
 
 Now `Headers` object contains Cookie or Authorization which can be injected to web requests.
 This is a low level, session timeouts should be controlled manually.
+
+## First run
+
+During very first execution, node modules dependencies are installed. This can take a couple of seconds, second run doesn't need this process repetition so is much faster.
+
+## Credentials
+
+[node-sp-auth-config](https://github.com/koltyakov/node-sp-auth-config) is responsible for prompting auth strategy and credentials:
+
+![](./Assets/auth-wizard.gif)
+
+By default, after the propmpts are done `./config/private.json` file is created in the root folder of the app.
+
+![](./Assets/private-json.png)
+
+`GetAuth` checks for `./config/private.json` and continues without prompts if all needed for the strategy parameters are filled in.
+Password is stored as a secure string, it can be used only on the machine where it was generated. Password can be rewritten in the config and it will be encrypted on next auth method run.
+
+## Arguments
+
+`GetAuth` method receives a string with arguments which are passed as initiators to [AuthConfigSettings](https://github.com/koltyakov/node-sp-auth-config/blob/master/src/interfaces/index.ts#L35).
+
+```csharp
+Headers authHeaders = SPAuth.GetAuth("--encryptPassword=false --configPath='./config/private.uat.json'");
+```
+
+### Arguments use cases
+
+#### Redefine private config file path
+
+```bash
+--configPath='./config/private.prod.json'
+```
+
+#### Disable password encryption
+
+```bash
+--encryptPassword=false
+```
+
+#### Disable saving private config on disc
+
+```bash
+--saveConfigOnDisk=false
+```
+
+#### Enforce parameters prompts
+
+```bash
+--forcePrompts=true
+```
+
+#### Raw auth options (example)
+
+```bash
+--authOptions.siteUrl="http://sharepoint" --authOptions.username="user@contoso.com" --authOptions.password="p@ssw0rd" --saveConfigOnDisk=false
+```
