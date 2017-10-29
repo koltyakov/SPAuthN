@@ -1,7 +1,9 @@
 ﻿using EdgeJs;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace SPAuthN
 {
@@ -14,22 +16,24 @@ namespace SPAuthN
             return await func(args);
         }
 
-        public static Headers GetAuth(string args = "")
+        public static Options GetAuth(string args = "")
         {
             Utils.NpmInstall();
-            string authHeadersStr = (string)AuthTask(args).Result;
+            dynamic context = AuthTask(args).Result;
 
-            Headers authHeaders = new Headers();
+            Options options = new Options();
 
-            string[] headersArr = authHeadersStr.Split(new[] { ";;" }, StringSplitOptions.None);
-            for (int i = 0; i < headersArr.Length; i++)
+            options.SiteUrl = context.siteUrl;
+            options.Headers = new WebHeaderCollection();
+
+            foreach (var property in (IDictionary<String, Object>)context.headers)
             {
-                string[] header = headersArr[i].Split(new[] { "::" }, StringSplitOptions.None);
-                authHeaders.GetType().GetProperty(header[0]).SetValue(authHeaders, header[1]);
+                options.Headers.Add((string)property.Key, (string)property.Value);
             }
 
-            return authHeaders;
+            return options;
         }
+
     }
 
 }
