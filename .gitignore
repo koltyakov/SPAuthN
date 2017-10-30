@@ -1,9 +1,6 @@
 node_modules
 config/private.json
 
-# Edge.JS libs
-SPAuthN/edge/**/*.*
-
 packaging/nuget/**/*.nupkg
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -248,3 +245,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Edge.JS libs
+!SPAuthN/edge/**/*.*
