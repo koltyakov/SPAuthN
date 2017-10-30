@@ -163,10 +163,7 @@ response.Close();
 Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
 using (ClientContext clientContext = new ClientContext(options.SiteUrl))
 {
-  clientContext.ExecutingWebRequest += (sender, arguments) =>
-  {
-    Request.ApplyAuth(arguments.WebRequestExecutor, options);
-  };
+  Request.ApplyAuth<WebRequestEventArgs>(clientContext, options);
 
   var web = clientContext.Web;
   clientContext.Load(web);
