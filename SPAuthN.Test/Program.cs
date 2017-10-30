@@ -49,10 +49,7 @@ namespace SPAuthN.Test
 
             using (ClientContext clientContext = new ClientContext(options.SiteUrl))
             {
-                clientContext.ExecutingWebRequest += (sender, arguments) =>
-                {
-                    Request.ApplyAuth(arguments.WebRequestExecutor, options);
-                };
+                Request.ApplyAuth<WebRequestEventArgs>(clientContext, options);
 
                 var web = clientContext.Web;
                 clientContext.Load(web);
