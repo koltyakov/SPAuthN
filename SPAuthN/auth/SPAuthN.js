@@ -23,6 +23,7 @@
         ]);
       })
       .then(result => {
+        delete result[1].options;
         let response = Object.assign({}, result[0], result[1]);
         callback(null, response);
       })

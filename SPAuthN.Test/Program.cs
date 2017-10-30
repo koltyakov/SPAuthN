@@ -12,6 +12,7 @@ namespace SPAuthN.Test
         {
 
             Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
+
             Console.WriteLine("SharePoint web URL: {0}", options.SiteUrl);
             foreach (var key in options.Headers.AllKeys)
             {
@@ -19,8 +20,10 @@ namespace SPAuthN.Test
             }
             Console.WriteLine("");
 
-            WebRequest request = WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
-            request.Headers = options.Headers;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
+            Request.ApplyAuth(request, options);
+
+            request.Method = "GET";
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -48,10 +51,7 @@ namespace SPAuthN.Test
             {
                 clientContext.ExecutingWebRequest += (sender, arguments) =>
                 {
-                    foreach (var key in options.Headers.AllKeys)
-                    {
-                        arguments.WebRequestExecutor.RequestHeaders[key] = options.Headers[key];
-                    }
+                    Request.ApplyAuth(arguments.WebRequestExecutor, options);
                 };
 
                 var web = clientContext.Web;

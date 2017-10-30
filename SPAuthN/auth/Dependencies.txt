@@ -1,7 +1,1 @@
-﻿Should be automatically removed if everything is ok.
-
-If you see this document in your compiled app folder first auth run should fix this.
-
-If described above doesn't help:
-- Copy package.json from this folder to app's root directory
-- Run `npm install` in app's root directory
+﻿Should be automatically updated if everything is ok.

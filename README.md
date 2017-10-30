@@ -127,9 +127,13 @@ Options options = SPAuth.GetAuth("--encryptPassword=false --configPath='./config
 
 ```csharp
 Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
-WebRequest request = WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
-request.Headers = options.Headers;
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
+Request.ApplyAuth(request, options);
+
+request.Method = "GET";
+
 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
 {
   Stream dataStream = response.GetResponseStream();
@@ -144,10 +148,14 @@ if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatu
     .Element(m + "properties").Element(d + "Title").Value;
 
   Console.WriteLine("REST | Web title is: {0}", title);
+
   dataStream.Close();
 }
+
 response.Close();
 ```
+
+`request.Accept = "application/json; odata=verbose";` can/should be used to get data as JSON then deserialize response with NewtonSoft Json.NET for instance.
 
 #### CSOM
 
@@ -157,10 +165,7 @@ using (ClientContext clientContext = new ClientContext(options.SiteUrl))
 {
   clientContext.ExecutingWebRequest += (sender, arguments) =>
   {
-    foreach (var key in options.Headers.AllKeys)
-    {
-      arguments.WebRequestExecutor.RequestHeaders[key] = options.Headers[key];
-    }
+    Request.ApplyAuth(arguments.WebRequestExecutor, options);
   };
 
   var web = clientContext.Web;

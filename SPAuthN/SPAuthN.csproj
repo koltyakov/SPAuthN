@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Auth.cs" />
     <Compile Include="Options.cs" />
+    <Compile Include="Request.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -17,21 +17,32 @@ namespace SPAuthN
 
         public static bool NeedToInstall()
         {
-            return File.Exists("auth/Dependencies.txt") || !Directory.Exists("node_modules");
+            bool versionUpdate = false;
+            string depPath = "auth/Dependencies.txt";
+            string depInstalled = "Installed";
+            if (File.Exists(depPath))
+            {
+                if (File.ReadAllText(depPath).ToString() != depInstalled)
+                {
+                    File.WriteAllText(depPath, depInstalled);
+                    versionUpdate = true;
+                }
+            }
+            return versionUpdate || !Directory.Exists("node_modules");
         }
 
-        public static void NpmInstall()
+        public static void NpmCheckAndInstall()
         {
             if (NeedToInstall())
             {
                 Console.WriteLine("Running dependencies install, please wait...");
+                File.Copy("auth/package.json", "package.json", true);
                 if (File.Exists("package-lock.json")) 
                 {
                     File.Delete("package-lock.json");
                 }
-                File.Copy("auth/package.json", "package.json", true);
                 CmdExecTask("npm install").Wait();
-                File.Delete("auth/Dependencies.txt");
+                // File.Delete("auth/Dependencies.txt");
                 File.Delete("package.json");
             }
         }

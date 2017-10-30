@@ -18,12 +18,14 @@ namespace SPAuthN
 
         public static Options GetAuth(string args = "")
         {
-            Utils.NpmInstall();
+            Utils.NpmCheckAndInstall();
             dynamic context = AuthTask(args).Result;
 
             Options options = new Options();
 
             options.SiteUrl = context.siteUrl;
+            options.Strategy = context.strategy;
+            options.AuthOptions = context.authOptions;
             options.Headers = new WebHeaderCollection();
 
             foreach (var property in (IDictionary<String, Object>)context.headers)
