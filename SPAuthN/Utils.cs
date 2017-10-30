@@ -1,4 +1,5 @@
 ﻿using EdgeJs;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -23,6 +24,11 @@ namespace SPAuthN
         {
             if (NeedToInstall())
             {
+                Console.WriteLine("Running dependencies install, please wait...");
+                if (File.Exists("package-lock.json")) 
+                {
+                    File.Delete("package-lock.json");
+                }
                 File.Copy("auth/package.json", "package.json", true);
                 CmdExecTask("npm install").Wait();
                 File.Delete("auth/Dependencies.txt");
