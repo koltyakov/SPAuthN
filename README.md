@@ -129,33 +129,25 @@ Options options = SPAuth.GetAuth("--encryptPassword=false --configPath='./config
 Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
 Request.ApplyAuth(request, options);
-
 request.Method = "GET";
-
-HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
+request.Accept = "application/json; odata=verbose";
+using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
 {
-  Stream dataStream = response.GetResponseStream();
-  XDocument xDoc = XDocument.Load(dataStream);
+  if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
+  {
+    using (Stream dataStream = response.GetResponseStream())
+    {
+      using (StreamReader reader = new StreamReader(dataStream))
+      {
+        string strResponse = reader.ReadToEnd();
+        dynamic results = JsonConvert.DeserializeObject(strResponse);
 
-  XNamespace ns = "http://www.w3.org/2005/Atom";
-  XNamespace d = "http://schemas.microsoft.com/ado/2007/08/dataservices";
-  XNamespace m = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
-
-  string title = xDoc
-    .Element(ns + "entry").Element(ns + "content")
-    .Element(m + "properties").Element(d + "Title").Value;
-
-  Console.WriteLine("REST | Web title is: {0}", title);
-
-  dataStream.Close();
+        Console.WriteLine("REST | Web title is: {0}", results.d.Title);
+      }
+    }
+  }
 }
-
-response.Close();
 ```
-
-`request.Accept = "application/json; odata=verbose";` can/should be used to get data as JSON then deserialize response with NewtonSoft Json.NET for instance.
 
 #### CSOM
 
