@@ -7,7 +7,6 @@ namespace SPAuthN
     {
         public static void ApplyAuth(HttpWebRequest request, Options options)
         {
-
             if (options.Strategy == "OnpremiseUserCredentials")
             {
                 var auth = options.AuthOptions;
@@ -15,25 +14,16 @@ namespace SPAuthN
                 credCache.Add(new Uri(options.SiteUrl), "NTLM", new NetworkCredential(auth.username, auth.password, auth.domain));
                 request.Credentials = credCache;
             }
-
-            foreach (var key in options.Headers.AllKeys)
+            else
             {
-                if (key.ToLower() == "connection")
+                foreach (var key in options.Headers.AllKeys)
                 {
-                    request.KeepAlive = options.Headers[key].ToLower() == "close" ? false : true;
-                    continue;
+                    if (!WebHeaderCollection.IsRestricted(key))
+                    {
+                        request.Headers.Add(key, options.Headers[key]);
+                    }
                 }
-                if (key.ToLower() == "authorization")
-                {
-                    // request.UnsafeAuthenticatedConnectionSharing = true;
-                    // request.PreAuthenticate = true;               
-                    // request.UseDefaultCredentials = true;
-                    continue;
-                }
-                if (!WebHeaderCollection.IsRestricted(key))
-                {
-                    request.Headers.Add(key, options.Headers[key]);
-                }
+                request.Headers.Add("Origin", options.SiteUrl);
             }
         }
 
@@ -46,17 +36,16 @@ namespace SPAuthN
                 credCache.Add(new Uri(options.SiteUrl), "NTLM", new NetworkCredential(auth.username, auth.password, auth.domain));
                 clientContext.Credentials = credCache;
             }
-
-            foreach (var key in options.Headers.AllKeys)
+            else
             {
-                if (key.ToLower() == "connection" || key.ToLower() == "authorization")
+                foreach (var key in options.Headers.AllKeys)
                 {
-                    continue;
+                    if (!WebHeaderCollection.IsRestricted(key))
+                    {
+                        webRequestExecutor.RequestHeaders.Add(key, options.Headers[key]);
+                    }
                 }
-                if (!WebHeaderCollection.IsRestricted(key))
-                {
-                    webRequestExecutor.RequestHeaders.Add(key, options.Headers[key]);
-                }
+                webRequestExecutor.RequestHeaders.Add("Origin", options.SiteUrl);
             }
         }
 
@@ -69,22 +58,20 @@ namespace SPAuthN
                 credCache.Add(new Uri(options.SiteUrl), "NTLM", new NetworkCredential(auth.username, auth.password, auth.domain));
                 clientContext.Credentials = credCache;
             }
-
-            clientContext.ExecutingWebRequest += new EventHandler<T>((sender, arguments) =>
+            else
             {
-                foreach (var key in options.Headers.AllKeys)
+                clientContext.ExecutingWebRequest += new EventHandler<T>((sender, arguments) =>
                 {
-                    if (key.ToLower() == "connection" || key.ToLower() == "authorization")
+                    foreach (var key in options.Headers.AllKeys)
                     {
-                        continue;
+                        if (!WebHeaderCollection.IsRestricted(key))
+                        {
+                            ((dynamic)arguments).WebRequestExecutor.RequestHeaders.Add(key, options.Headers[key]);
+                        }
                     }
-                    if (!WebHeaderCollection.IsRestricted(key))
-                    {
-                        ((dynamic)arguments).WebRequestExecutor.RequestHeaders.Add(key, options.Headers[key]);
-                    }
-                }
-            });
-
+                    ((dynamic)arguments).WebRequestExecutor.RequestHeaders.Add("Origin", options.SiteUrl);
+                });
+            }
         }
 
 
