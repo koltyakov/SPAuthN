@@ -1,8 +1,8 @@
 ﻿using Microsoft.SharePoint.Client;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
-using System.Xml.Linq;
 
 namespace SPAuthN.Test
 {
@@ -13,39 +13,32 @@ namespace SPAuthN.Test
 
             Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
 
-            Console.WriteLine("SharePoint web URL: {0}", options.SiteUrl);
-            foreach (var key in options.Headers.AllKeys)
-            {
-                Console.WriteLine("\nHeader: {0} \nValue: {1}", key, options.Headers[key]);
-            }
-            Console.WriteLine("");
+            /* REST Example */
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(options.SiteUrl + "/_api/web?$select=Title");
             Request.ApplyAuth(request, options);
 
             request.Method = "GET";
+            request.Accept = "application/json; odata=verbose";
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                Stream dataStream = response.GetResponseStream();
-                XDocument xDoc = XDocument.Load(dataStream);
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    using (Stream dataStream = response.GetResponseStream())
+                    {
+                        using (StreamReader reader = new StreamReader(dataStream))
+                        {
+                            string strResponse = reader.ReadToEnd();
+                            dynamic results = JsonConvert.DeserializeObject(strResponse);
 
-                XNamespace ns = "http://www.w3.org/2005/Atom";
-                XNamespace d = "http://schemas.microsoft.com/ado/2007/08/dataservices";
-                XNamespace m = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
-
-                string title = xDoc
-                    .Element(ns + "entry").Element(ns + "content")
-                    .Element(m + "properties").Element(d + "Title").Value;
-
-                Console.WriteLine("REST | Web title is: {0}", title);
-
-                dataStream.Close();
+                            Console.WriteLine("REST | Web title is: {0}", results.d.Title);
+                        }
+                    }
+                }
             }
 
-            response.Close();
+            /* CSOM Example */
 
             using (ClientContext clientContext = new ClientContext(options.SiteUrl))
             {
