@@ -52,7 +52,7 @@ namespace SPAuthN.Test
             }
 
 
-            var bp = "";
+            var bp = ""; bp += "";
 
         }
     }

@@ -3,13 +3,13 @@
   <metadata>
 
     <id>SPAuthN</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>SPAuthN</title>
 
     <description>SharePoint .Net auth with Node.js</description>
     <tags>sharepoint auth dotnet nodejs node-sp-auth crazystuff</tags>
 
-    <releaseNotes>headers optimization</releaseNotes>
+    <releaseNotes>node-sp-atuh-config dependency update</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>
