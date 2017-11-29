@@ -3,7 +3,7 @@
   <metadata>
 
     <id>SPAuthN</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>SPAuthN</title>
 
     <description>SharePoint .Net auth with Node.js</description>
