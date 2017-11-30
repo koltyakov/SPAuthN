@@ -18,7 +18,16 @@ namespace SPAuthN
 
         public static Options GetAuth(string args = "")
         {
-            Utils.NpmCheckAndInstall();
+            return GetAuth(args, true);
+        }
+
+        public static Options GetAuth(string args = "", Boolean checkDependencies = true)
+        {
+            if (checkDependencies)
+            {
+                Utils.NpmCheckAndInstall();
+            }
+
             dynamic context = AuthTask(args).Result;
 
             Options options = new Options();
@@ -26,6 +35,10 @@ namespace SPAuthN
             options.SiteUrl = context.siteUrl;
             options.Strategy = context.strategy;
             options.AuthOptions = context.authOptions;
+
+            options.Settings = context.settings;
+            options.Custom = context.custom;
+
             options.Headers = new WebHeaderCollection();
 
             foreach (var property in (IDictionary<String, Object>)context.headers)

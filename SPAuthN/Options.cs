@@ -11,6 +11,10 @@ namespace SPAuthN
 
         public dynamic AuthOptions { get; set; }
 
+        public dynamic Settings { get; set; }
+
+        public dynamic Custom { get; set; }
+
         public WebHeaderCollection Headers { get; set; }
 
     }
