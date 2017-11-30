@@ -1,6 +1,7 @@
 ﻿using Microsoft.SharePoint.Client;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 
@@ -11,7 +12,13 @@ namespace SPAuthN.Test
         static void Main(string[] args)
         {
 
+            Stopwatch sw = new Stopwatch();
+
+            sw.Start();
+
             Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
+
+            sw.Stop(); Console.WriteLine("Auth time: " + sw.Elapsed);
 
             /* REST Example */
 
@@ -21,6 +28,7 @@ namespace SPAuthN.Test
             request.Method = "GET";
             request.Accept = "application/json; odata=verbose";
 
+            sw.Restart();
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent)
@@ -37,19 +45,24 @@ namespace SPAuthN.Test
                     }
                 }
             }
+            sw.Stop(); Console.WriteLine("REST request time: " + sw.Elapsed);
 
             /* CSOM Example */
 
+            sw.Restart();
             using (ClientContext clientContext = new ClientContext(options.SiteUrl))
             {
                 Request.ApplyAuth<WebRequestEventArgs>(clientContext, options);
 
+                Console.WriteLine("web");
                 var web = clientContext.Web;
                 clientContext.Load(web);
                 clientContext.ExecuteQuery();
 
+                // System.Threading.Thread.Sleep(1 * 1000);
                 Console.WriteLine("CSOM | Web title is: {0}", web.Title);
             }
+            sw.Stop(); Console.WriteLine("CSOM request time: " + sw.Elapsed);
 
 
             var bp = ""; bp += "";

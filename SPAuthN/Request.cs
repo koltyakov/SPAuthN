@@ -38,6 +38,10 @@ namespace SPAuthN
             }
             else
             {
+                if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
+                {
+                    options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
+                }
                 foreach (var key in options.Headers.AllKeys)
                 {
                     if (!WebHeaderCollection.IsRestricted(key))
@@ -62,6 +66,10 @@ namespace SPAuthN
             {
                 clientContext.ExecutingWebRequest += new EventHandler<T>((sender, arguments) =>
                 {
+                    if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
+                    {
+                        options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
+                    }
                     foreach (var key in options.Headers.AllKeys)
                     {
                         if (!WebHeaderCollection.IsRestricted(key))

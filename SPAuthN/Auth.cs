@@ -27,26 +27,8 @@ namespace SPAuthN
             {
                 Utils.NpmCheckAndInstall();
             }
-
             dynamic context = AuthTask(args).Result;
-
-            Options options = new Options();
-
-            options.SiteUrl = context.siteUrl;
-            options.Strategy = context.strategy;
-            options.AuthOptions = context.authOptions;
-
-            options.Settings = context.settings;
-            options.Custom = context.custom;
-
-            options.Headers = new WebHeaderCollection();
-
-            foreach (var property in (IDictionary<String, Object>)context.headers)
-            {
-                options.Headers.Add((string)property.Key, (string)property.Value);
-            }
-
-            return options;
+            return new Options(context);
         }
 
     }
