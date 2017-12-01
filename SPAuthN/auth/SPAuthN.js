@@ -31,7 +31,6 @@
         if (typeof response.custom === 'undefined') {
           response.custom = null;
         }
-        console.log(response);
         callback(null, response);
       })
       .catch(error => {
