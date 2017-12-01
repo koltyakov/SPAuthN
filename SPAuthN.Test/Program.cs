@@ -16,7 +16,7 @@ namespace SPAuthN.Test
 
             sw.Start();
 
-            Options options = SPAuth.GetAuth("--configPath='./config/private.json'");
+            Options options = SPAuth.GetAuth("--configPath='./config/private.json' --forcePrompts=true");
 
             sw.Stop(); Console.WriteLine("Auth time: " + sw.Elapsed);
 

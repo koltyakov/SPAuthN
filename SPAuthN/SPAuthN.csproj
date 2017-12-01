@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth.cs" />
-    <Compile Include="Options.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utils.cs" />

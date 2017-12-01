@@ -25,6 +25,13 @@
       .then(result => {
         delete result[1].options;
         let response = Object.assign({}, result[0], result[1]);
+        if (typeof response.settings === 'undefined') {
+          response.settings = null;
+        }
+        if (typeof response.custom === 'undefined') {
+          response.custom = null;
+        }
+        console.log(response);
         callback(null, response);
       })
       .catch(error => {

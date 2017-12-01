@@ -3,13 +3,13 @@
   <metadata>
 
     <id>SPAuthN</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>SPAuthN</title>
 
     <description>SharePoint .Net auth with Node.js</description>
     <tags>sharepoint auth dotnet nodejs node-sp-auth crazystuff</tags>
 
-    <releaseNotes>csom session refresh</releaseNotes>
+    <releaseNotes>forceprompts and settings object issue fix</releaseNotes>
 
     <authors>Andrew Koltyakov</authors>
     <owners>ARVO Systems</owners>
