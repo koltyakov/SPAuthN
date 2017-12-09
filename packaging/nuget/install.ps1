@@ -1,5 +1,6 @@
 param($installPath, $toolsPath, $package, $project)
 
+<#
 function MarkDirectoryAsCopyToOutputRecursive($item)
 {
     $item.ProjectItems | ForEach-Object { MarkFileASCopyToOutputDirectory($_) }
@@ -20,6 +21,7 @@ function MarkFileASCopyToOutputDirectory($item)
 }
 
 MarkDirectoryAsCopyToOutputRecursive($project.ProjectItems.Item("auth"))
+#>
 
 ## Add Node-Edge dependencies to Git
 

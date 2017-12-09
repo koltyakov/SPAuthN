@@ -1,6 +1,6 @@
 {
   "name": "sp-auth-n",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "SPAuthN - SharePoint .Net auth with Node.js",
   "main": "SPAuthN.js",
   "scripts": {
@@ -18,7 +18,12 @@
   },
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/dnn-sp-auth#readme",
   "dependencies": {
-    "node-sp-auth-config": "^2.3.1",
+    "node-sp-auth-config": "^2.4.1",
     "string-argv": "0.0.2"
+  },
+  "devDependencies": {
+    "imports-loader": "^0.7.1",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "webpack": "^3.10.0"
   }
 }

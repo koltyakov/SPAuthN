@@ -40,7 +40,7 @@ namespace SPAuthN
             {
                 if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
                 {
-                    options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'", false);
+                    options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
                 }
                 foreach (var key in options.Headers.AllKeys)
                 {
@@ -68,7 +68,7 @@ namespace SPAuthN
                 {
                     if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
                     {
-                        options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'", false);
+                        options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
                     }
                     foreach (var key in options.Headers.AllKeys)
                     {
