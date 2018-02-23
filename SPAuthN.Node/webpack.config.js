@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 module.exports = {
   entry: './SPAuthN.js',
@@ -12,13 +13,27 @@ module.exports = {
     libraryTarget: 'var'
   },
   module: {
-    rules: [{
-      test: /rx\.lite\.aggregates\.js/,
-      use: 'imports-loader?define=>false'
-    }]
+    rules: [
+      {
+        test: /rx\.lite\.aggregates\.js/,
+        use: 'imports-loader?define=>false'
+      },
+      {
+        test: /OnDemand\.js/,
+        loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+                pattern: `path.join(__dirname, 'electron/main.js')`,
+                replacement: () => `path.join(process.cwd(), './electron/main.js')`
+            }
+          ]}
+        )
+      }
+    ]
   },
   plugins: [
     new UglifyJSPlugin(),
+    new StringReplacePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
