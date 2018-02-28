@@ -17,6 +17,7 @@ class Utils {
       }
       argV[0].split('.').reduce((res, prop, index, arr) => {
         if (arr.length === index + 1) {
+          argV[1] = `${argV[1]}`;
           if (!isNaN(parseInt(argV[1], 10))) {
             argV[1] = parseInt(argV[1], 10);
           } else if (argV[1].toLowerCase() === 'true') {
