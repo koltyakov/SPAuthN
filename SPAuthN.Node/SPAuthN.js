@@ -1,4 +1,6 @@
-﻿const AuthConfig = require('node-sp-auth-config').AuthConfig;
+﻿//@ts-check
+
+const AuthConfig = require('node-sp-auth-config').AuthConfig;
 const spAuth = require('node-sp-auth');
 
 const utils = require('./utils');
