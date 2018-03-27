@@ -4,6 +4,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
+  cache: false,
   entry: './SPAuthN.js',
   target: 'node',
   output: {
@@ -23,8 +25,8 @@ module.exports = {
         loader: StringReplacePlugin.replace({
           replacements: [
             {
-                pattern: `path.join(__dirname, 'electron/main.js')`,
-                replacement: () => `path.join(process.cwd(), './electron/main.js')`
+              pattern: `path.join(__dirname, 'electron/main.js')`,
+              replacement: () => `path.join(process.cwd(), './electron/main.js')`
             }
           ]}
         )
@@ -32,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({ sourceMap: true }),
     new StringReplacePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
