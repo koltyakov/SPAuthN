@@ -54,7 +54,6 @@ namespace SPAuthN.Test
             {
                 Request.ApplyAuth<WebRequestEventArgs>(clientContext, options);
 
-                Console.WriteLine("web");
                 var web = clientContext.Web;
                 clientContext.Load(web);
                 clientContext.ExecuteQuery();
