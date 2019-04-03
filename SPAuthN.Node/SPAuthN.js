@@ -1,16 +1,17 @@
 ﻿//@ts-check
 
-const AuthConfig = require('node-sp-auth-config').AuthConfig;
+const { AuthConfig } = require('node-sp-auth-config');
 const spAuth = require('node-sp-auth');
 
 const utils = require('./utils');
 
 const auth = (args, callback) => {
 
-  let authOptions = Object.assign({}, {
+  const authOptions = Object.assign({}, {
     configPath: './config/private.json',
     encryptPassword: true,
-    saveConfigOnDisk: true
+    saveConfigOnDisk: true,
+    headlessMode: false
   }, utils.stringToArgvs(args));
 
   const authConfig = new AuthConfig(authOptions);
@@ -24,7 +25,7 @@ const auth = (args, callback) => {
     })
     .then(result => {
       delete result[1].options;
-      let response = Object.assign({}, result[0], result[1]);
+      const response = Object.assign({}, result[0], result[1]);
       if (typeof response.settings === 'undefined') {
         response.settings = null;
       }

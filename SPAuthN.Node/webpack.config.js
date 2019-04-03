@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 module.exports = {
@@ -34,10 +34,18 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJSPlugin({ sourceMap: true }),
     new StringReplacePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
+    // new UglifyJsPlugin({
+    //   sourceMap: false,
+    //   uglifyOptions: {
+    //     ecma: 8,
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   }
+    // })
   ]
 };
