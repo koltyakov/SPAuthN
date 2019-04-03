@@ -16,7 +16,7 @@ namespace SPAuthN.Test
 
             sw.Start();
 
-            Options options = SPAuth.GetAuth("--configPath='./config/private.ondemand.json' --forcePrompts=true");
+            Options options = SPAuth.GetAuth("--configPath='./config/private.json' --forcePrompts=true");
 
             sw.Stop(); Console.WriteLine("Auth time: " + sw.Elapsed);
 
@@ -60,6 +60,18 @@ namespace SPAuthN.Test
 
                 // System.Threading.Thread.Sleep(1 * 1000);
                 Console.WriteLine("CSOM | Web title is: {0}", web.Title);
+
+                // Endless loop
+                /*
+                while (true)
+                {
+                    var web1 = clientContext.Web;
+                    clientContext.Load(web1);
+                    clientContext.ExecuteQuery();
+                    Console.WriteLine("CSOM | Web title is: {0}", web1.Title);
+                    System.Threading.Thread.Sleep(1 * 1000);
+                }
+                */
             }
             sw.Stop(); Console.WriteLine("CSOM request time: " + sw.Elapsed);
 

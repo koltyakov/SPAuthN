@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.IO;
 
 namespace SPAuthN
 {
@@ -40,7 +41,10 @@ namespace SPAuthN
             {
                 if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
                 {
-                    options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
+                    string args = File.Exists(options.Settings.configPath)
+                        ? $@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'"
+                        : options.Args;
+                    options = SPAuth.GetAuth(args);
                 }
                 foreach (var key in options.Headers.AllKeys)
                 {
@@ -68,7 +72,10 @@ namespace SPAuthN
                 {
                     if ((DateTime.UtcNow - options.Timestamp).TotalSeconds > Settings.RefreshTimeout)
                     {
-                        options = SPAuth.GetAuth($@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'");
+                        string args = File.Exists(options.Settings.configPath)
+                            ? $@"--saveConfigOnDisk=false --configPath='{options.Settings.configPath}'"
+                            : options.Args;
+                        options = SPAuth.GetAuth(args);
                     }
                     foreach (var key in options.Headers.AllKeys)
                     {

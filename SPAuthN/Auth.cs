@@ -13,13 +13,13 @@ namespace SPAuthN
         public static async Task<object> AuthTask(string args = "")
         {
             var func = Edge.Func(Resources.SPAuthN + "; return SPAuthN.auth;");
-
             return await func(args);
         }
 
         public static Options GetAuth(string args = "")
         {
             dynamic context = AuthTask(args).Result;
+            context.args = args;
             return new Options(context);
         }
 
@@ -33,7 +33,7 @@ namespace SPAuthN
         {
             _timestamp = DateTime.UtcNow;
 
-
+            Args = context.args;
             SiteUrl = context.siteUrl;
             Strategy = context.strategy;
             AuthOptions = context.authOptions;
@@ -54,6 +54,8 @@ namespace SPAuthN
                 Headers.Add((string)property.Key, (string)property.Value);
             }
         }
+
+        public string Args { get; set; }
 
         public string SiteUrl { get; set; }
 
