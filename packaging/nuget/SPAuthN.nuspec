@@ -3,7 +3,7 @@
   <metadata>
 
     <id>SPAuthN</id>
-    <version>2.0.4</version>
+    <version>2.1.0</version>
     <title>SPAuthN</title>
 
     <description>SharePoint .Net auth with Node.js</description>
@@ -19,7 +19,8 @@
 
     <summary>On the first place, it is a crazy experiment which solves one of the our very specific task for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why. Please use the lib only in case when native .Net Credentials strategies do not suite your app.</summary>
 
-    <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPAuthN/master/LICENSE</licenseUrl>
+    <!-- <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPAuthN/master/LICENSE</licenseUrl> -->
+    <license type="expression">MIT</license>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
     <dependencies>
