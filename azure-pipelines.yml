@@ -37,7 +37,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - script: |
-    .\SPAuthN.Console\bin\Debug\SPAuthN.Console.exe
+    .\SPAuthN.Console\bin\Release\SPAuthN.Console.exe
   displayName: 'Run SPAuthN.ConsoleTest'
   timeoutInMinutes: 1
   env:
