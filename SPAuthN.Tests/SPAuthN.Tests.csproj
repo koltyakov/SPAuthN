@@ -115,9 +115,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Params.cs" />
     <Compile Include="CSOM.cs" />
-    <Compile Include="REST.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EnvVars.cs" />
+    <Compile Include="REST.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
