@@ -7,8 +7,8 @@
     <ProjectGuid>{AAF4434B-058B-4CB6-B29E-1157F4A3CC50}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SPAuthN.Test</RootNamespace>
-    <AssemblyName>SPAuthN.Test</AssemblyName>
+    <RootNamespace>SPAuthN.Console</RootNamespace>
+    <AssemblyName>SPAuthN.Console</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

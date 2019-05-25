@@ -36,6 +36,15 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- script: |
+    .\SPAuthN.Console\bin\Debug\SPAuthN.Console.exe
+  displayName: 'Run SPAuthN.ConsoleTest'
+  timeoutInMinutes: 1
+  env:
+    SPAUTH_SITEURL: $(ci.spo.siteurl)
+    SPAUTH_USERNAME: $(ci.spo.username)
+    SPAUTH_PASSWORD: $(ci.spo.password)
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'

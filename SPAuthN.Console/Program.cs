@@ -16,7 +16,20 @@ namespace SPAuthN.ConsoleTest
 
             sw.Start();
 
-            Options options = SPAuth.GetAuth("--configPath='./config/private.json' --forcePrompts=true");
+            string SiteUrl = Environment.GetEnvironmentVariable("SPAUTH_SITEURL");
+            string Username = Environment.GetEnvironmentVariable("SPAUTH_USERNAME");
+            string Password = Environment.GetEnvironmentVariable("SPAUTH_PASSWORD");
+
+            Options options = null;
+
+            if (SiteUrl != null && Username != null && Password != null)
+            {
+                options = SPAuth.GetAuth($@"--authOptions.siteUrl='{SiteUrl}' --authOptions.username='{Username}' --authOptions.password='{Password}' --saveConfigOnDisk=false");
+            }
+            else
+            {
+                options = SPAuth.GetAuth("--configPath='./config/private.json' --forcePrompts=true");
+            }
 
             sw.Stop(); Console.WriteLine("Auth time: " + sw.Elapsed);
 
