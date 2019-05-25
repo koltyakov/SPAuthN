@@ -46,6 +46,7 @@ steps:
     SPAUTH_PASSWORD: $(ci.spo.password)
 
 - task: VSTest@2
+  timeoutInMinutes: 1
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
