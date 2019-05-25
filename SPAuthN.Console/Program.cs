@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 
-namespace SPAuthN.Test
+namespace SPAuthN.ConsoleTest
 {
     class Program
     {

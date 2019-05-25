@@ -16,7 +16,7 @@ steps:
   displayName: 'Install Node.js'
 
 - task: NuGetToolInstaller@0
-  
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -40,3 +40,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+  env:
+    SPAUTH_SITEURL: $(ci.spo.siteurl)
+    SPAUTH_USERNAME: $(ci.spo.username)
+    SPAUTH_PASSWORD: $(ci.spo.password)
