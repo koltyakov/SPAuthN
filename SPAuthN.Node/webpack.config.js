@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 
 module.exports = {
@@ -24,13 +24,27 @@ module.exports = {
         test: /OnDemand\.js/,
         loader: StringReplacePlugin.replace({
           replacements: [
+            // {
+            //   pattern: `'--', this._siteUrl, this._authOptions.force.toString()]`,
+            //   replacement: () => `this._siteUrl, this._authOptions.force.toString()]`
+            // },
             {
               pattern: `path.join(__dirname, 'electron/main.js')`,
-              replacement: () => `path.join(process.cwd(), './electron/main.js')`
+              replacement: () => `path.join(process.cwd(), 'electron/main.js')`
             }
           ]}
         )
       }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+        extractComments: 'all'
+      })
     ]
   },
   plugins: [
@@ -38,14 +52,5 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
-    // new UglifyJsPlugin({
-    //   sourceMap: false,
-    //   uglifyOptions: {
-    //     ecma: 8,
-    //     compress: {
-    //       warnings: false
-    //     }
-    //   }
-    // })
   ]
 };
