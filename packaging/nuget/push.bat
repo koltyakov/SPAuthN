@@ -1,1 +1,1 @@
-nuget push SPAuthN.2.1.0.nupkg -Source https://www.nuget.org/api/v2/package
+nuget push SPAuthN.2.1.1.nupkg -Source https://www.nuget.org/api/v2/package

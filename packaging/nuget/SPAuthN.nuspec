@@ -20,7 +20,7 @@
     <summary>On the first place, it is a crazy experiment which solves one of the our very specific task for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why. Please use the lib only in case when native .Net Credentials strategies do not suite your app.</summary>
 
     <!-- <licenseUrl>https://raw.githubusercontent.com/koltyakov/SPAuthN/master/LICENSE</licenseUrl> -->
-    <license type="expression">MIT</license>
+    <!-- <license type="expression">MIT</license> -->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
     <dependencies>
@@ -31,7 +31,7 @@
 
   <files>
     <file src="..\..\SPAuthN\bin\Debug\SPAuthN.dll" target="lib\net45" />
-    <file src="..\..\SPAuthN\Utils\electron\**\*.*" target="content/electron" />
+    <file src="..\..\SPAuthN\electron\**\*.*" target="content/electron" />
     <file src=".\install.ps1" target="tools" />
   </files>
 
