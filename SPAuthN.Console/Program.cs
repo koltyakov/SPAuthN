@@ -26,6 +26,10 @@ namespace SPAuthN.ConsoleTest
             {
                 options = SPAuth.GetAuth($@"--authOptions.siteUrl='{SiteUrl}' --authOptions.username='{Username}' --authOptions.password='{Password}' --saveConfigOnDisk=false");
             }
+            else if (SiteUrl != null && Username == null && Password == null) // On-Demand test
+            {
+                options = SPAuth.GetAuth($@"--authOptions.siteUrl='{SiteUrl}' --authOptions.ondemand=true --forcePrompts=false");
+            }
             else
             {
                 options = SPAuth.GetAuth("--configPath='./config/private.json' --forcePrompts=true");
