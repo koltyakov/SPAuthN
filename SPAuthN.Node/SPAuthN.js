@@ -17,13 +17,13 @@ const auth = (args, callback) => {
   const authConfig = new AuthConfig(authOptions);
 
   authConfig.getContext()
-    .then(context => {
+    .then((context) => {
       return Promise.all([
         context,
         spAuth.getAuth(context.siteUrl, context.authOptions),
       ]);
     })
-    .then(result => {
+    .then((result) => {
       delete result[1].options;
       const response = Object.assign({}, result[0], result[1]);
       if (typeof response.settings === 'undefined') {
@@ -34,9 +34,7 @@ const auth = (args, callback) => {
       }
       callback(null, response);
     })
-    .catch(error => {
-      callback(error, null);
-    });
+    .catch((error) => callback(error, null));
 
 };
 

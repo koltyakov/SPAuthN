@@ -2,6 +2,7 @@
 
 [![NuGet version](https://img.shields.io/nuget/v/SPAuthN.svg)](https://www.nuget.org/packages/SPAuthN)
 [![Downloads](https://img.shields.io/nuget/dt/SPAuthN.svg)](https://www.nuget.org/packages/SPAuthN)
+![Build Status](https://koltyakov.visualstudio.com/SPNode/_apis/build/status/SPAuthN?branchName=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sharepoint-node/Lobby)
 
 ---
@@ -12,7 +13,7 @@ Allows authenticating in SharePoint in whatever you need scenarios and provides 
 
 ---
 
-Hey! Attention, please! On the first place, it is a crazy experiment which solves one of our very specific tasks for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why. Please use the lib only in the case when native .Net credentials strategies do not suite your app.
+On the first place, it is an experiment which solves one of our very specific tasks for a frontier technology stack with SharePoint/Node.js/.Net where we need running the same exactly auth mechanisms which we use in Node.js but in .Net applications. We know exactly what we're doing and why. Please use the lib only in the case when native .Net credentials strategies do not suite your app.
 
 ## For whom is this library?
 
@@ -28,24 +29,33 @@ And definitely not for the situations when these work for you:
 - context.Credentials = new NetworkCredential("username", "password", "domain");
 - Any other native authentication routes.
 
-## Supported SharePoint versions
+## Versions supported
 
 - SharePoint Online
+- SharePoint 2019
 - SharePoint 2016
 - SharePoint 2013
+- SharePoint 2010 (limited support)
 
-## Authentication strategies
+## Authentication options
 
 - SharePoint Online:
-  - Addin only permissions
-  - SAML based with user credentials
-  - ADFS user credentials
-- SharePoint 2013, 2016:
-  - Addin only permissions
-  - User credentials through the http NTLM handshake
+  - User credentials (SAML/ADFS)
+  - Add-In Only permissions
+  - On-Demand authentication (using Electron popup)
+- SharePoint 2019, 2016, 2013:
+  - User credentials (NTLM, NTLM v2)
   - ADFS user credentials
   - Form-based authentication (FBA)
-  - Forefront TMG authentication
+  - Form-based authentication (Forefront TMG)
+  - Add-In Only permissions
+  - On-Demand authentication (using Electron popup)
+- SharePoint 2010:
+  - User credentials (NTLM, NTMLv2)
+  - Form-based authentication (FBA)
+  - Form-based authentication (Forefront TMG)
+
+Config layer and auth supports Office 365 Dedicated (SPO on custom domain) as well.
 
 ## How to install
 

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/dnn-sp-auth#readme",
   "dependencies": {
     "cpass": "^2.1.1",
-    "node-sp-auth-config": "^2.6.4",
+    "node-sp-auth-config": "^2.6.5",
     "string-argv": "0.1.2"
   },
   "devDependencies": {
