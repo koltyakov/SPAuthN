@@ -226,7 +226,7 @@ and limitations under the License.
 /**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -2698,7 +2698,7 @@ and limitations under the License.
      */
 
 /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -10095,6 +10095,10 @@ and limitations under the License.
 // If `variable` is not specified wrap a with-statement around the generated
 
 // code to add the data object to the top of the scope chain.
+
+// Like with sourceURL, we take care to not check the option's prototype,
+
+// as this configuration is a code injection vector.
 
 // Cleanup code by stripping empty strings.
 
@@ -18796,7 +18800,7 @@ Helper functions
  * Node External Editor
  *
  * Kevin Gravier <kevin@mrkmg.com>
- * MIT 2018
+ * MIT 2019
  */
 
 /** @class */
@@ -20052,6 +20056,13 @@ Helper functions
 // https://github.com/nodejs/node/blob/3e7a14381497a3b73dda68d05b5130563cdab420/lib/os.js#L25-L43
 
 /* 479 */
+
+/***
+ * Node External Editor
+ *
+ * Kevin Gravier <kevin@mrkmg.com>
+ * MIT 2018
+ */
 
 /* 480 */
 

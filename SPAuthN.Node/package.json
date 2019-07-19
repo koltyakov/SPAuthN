@@ -1,6 +1,6 @@
 {
   "name": "sp-auth-n",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "SPAuthN - SharePoint .Net auth with Node.js",
   "main": "SPAuthN.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/koltyakov/https://github.com/koltyakov/dnn-sp-auth#readme",
   "dependencies": {
     "cpass": "^2.1.1",
-    "node-sp-auth-config": "^2.6.5",
+    "node-sp-auth-config": "^2.6.7",
     "string-argv": "0.1.2"
   },
   "devDependencies": {
