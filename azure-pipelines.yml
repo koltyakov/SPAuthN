@@ -24,7 +24,7 @@ steps:
 
 - script: |
     cd .\SPAuthN.Node
-    npm install
+    npm ci
     npm run build
     cd ..
   displayName: 'npm install and build'
