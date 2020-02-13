@@ -1,6 +1,6 @@
 {
   "name": "sp-auth-n",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "SPAuthN - SharePoint .Net auth with Node.js",
   "main": "SPAuthN.js",
   "scripts": {

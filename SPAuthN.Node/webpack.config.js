@@ -24,10 +24,10 @@ module.exports = {
         test: /OnDemand\.js/,
         loader: StringReplacePlugin.replace({
           replacements: [
-            {
-              pattern: `'--', this._siteUrl, this._authOptions.force.toString()]`,
-              replacement: () => `this._siteUrl, this._authOptions.force.toString()]`
-            },
+            // {
+            //   pattern: `'--', this._siteUrl, this._authOptions.force.toString()]`,
+            //   replacement: () => `this._siteUrl, this._authOptions.force.toString()]`
+            // },
             {
               pattern: `path.join(__dirname, 'electron/main.js')`,
               replacement: () => `path.join(process.cwd(), 'electron/main.js')`
