@@ -72,6 +72,8 @@
 
 /* unused harmony export __spread */
 
+/* unused harmony export __spreadArrays */
+
 /* unused harmony export __await */
 
 /* unused harmony export __asyncGenerator */
@@ -1290,6 +1292,15 @@ and limitations under the License.
      * @private
      * @param {Object} symbol The symbol object to clone.
      * @returns {Object} Returns the cloned symbol object.
+     */
+
+/**
+     * Creates a clone of `typedArray`.
+     *
+     * @private
+     * @param {Object} typedArray The typed array to clone.
+     * @param {boolean} [isDeep] Specify a deep clone.
+     * @returns {Object} Returns the cloned typed array.
      */
 
 /**
@@ -2522,15 +2533,6 @@ and limitations under the License.
      */
 
 /**
-     * Creates a clone of `typedArray`.
-     *
-     * @private
-     * @param {Object} typedArray The typed array to clone.
-     * @param {boolean} [isDeep] Specify a deep clone.
-     * @returns {Object} Returns the cloned typed array.
-     */
-
-/**
      * Compares values to sort them in ascending order.
      *
      * @private
@@ -2684,26 +2686,6 @@ and limitations under the License.
      * @param {number} [ary] The arity cap of `func`.
      * @param {number} [arity] The arity of `func`.
      * @returns {Function} Returns the new wrapped function.
-     */
-
-/**
-     * Reorder `array` according to the specified indexes where the element at
-     * the first index is assigned as the first element, the element at
-     * the second index is assigned as the second element, and so on.
-     *
-     * @private
-     * @param {Array} array The array to reorder.
-     * @param {Array} indexes The arranged array indexes.
-     * @returns {Array} Returns `array`.
-     */
-
-/**
-     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
-     *
-     * @private
-     * @param {Object} object The object to query.
-     * @param {string} key The key of the property to get.
-     * @returns {*} Returns the property value.
      */
 
 /**
@@ -3143,6 +3125,26 @@ and limitations under the License.
      * @param {Object} object The object to query.
      * @param {Array} path The path to get the parent value of.
      * @returns {*} Returns the parent value.
+     */
+
+/**
+     * Reorder `array` according to the specified indexes where the element at
+     * the first index is assigned as the first element, the element at
+     * the second index is assigned as the second element, and so on.
+     *
+     * @private
+     * @param {Array} array The array to reorder.
+     * @param {Array} indexes The arranged array indexes.
+     * @returns {Array} Returns `array`.
+     */
+
+/**
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
      */
 
 /**
@@ -4626,6 +4628,12 @@ and limitations under the License.
      * jQuery(window).on('popstate', debounced.cancel);
      */
 
+// Invoke the leading edge.
+
+// Reset any `maxWait` timer.
+
+// Start the timer for the trailing edge.
+
 // Either this is the first call, activity has stopped and we're at the
 
 // trailing edge, the system time has gone backwards and we're treating
@@ -4637,12 +4645,6 @@ and limitations under the License.
 // Only invoke if we have `lastArgs` which means `func` has been
 
 // debounced at least once.
-
-// Invoke the leading edge.
-
-// Reset any `maxWait` timer.
-
-// Start the timer for the trailing edge.
 
 // Handle invocations in a tight loop.
 
@@ -10558,8 +10560,6 @@ and limitations under the License.
 
 /* 34 */
 
-//# sourceMappingURL=ObjectUnsubscribedError.js.map
-
 /* 35 */
 
 // Detect level if not set manually
@@ -10568,11 +10568,15 @@ and limitations under the License.
 
 // by itself will have a `this` of a previously constructed chalk object
 
-// If chalk() was called by itself or with a string,
-
-// return the string itself as a string.
-
 // Use bright blue on Windows as the normal blue color is illegible
+
+// eslint-disable-line no-proto
+
+// See below for fix regarding invisible grey/dim combination on Windows
+
+// `__proto__` is used because we must return a function, but there is
+
+// no way to create a function with a different prototype
 
 // Support varags, but simply cast to string in case there's only one arg
 
@@ -10598,13 +10602,9 @@ and limitations under the License.
 
 // Reset the original `dim` if we changed it to work around the Windows dimmed gray issue
 
-// eslint-disable-line no-proto
+// If chalk() was called by itself or with a string,
 
-// See below for fix regarding invisible grey/dim combination on Windows
-
-// `__proto__` is used because we must return a function, but there is
-
-// no way to create a function with a different prototype
+// return the string itself as a string.
 
 // eslint-disable-line new-cap
 
@@ -10618,8 +10618,6 @@ and limitations under the License.
 
 /* 37 */
 
-//# sourceMappingURL=ArgumentOutOfRangeError.js.map
-
 /* 38 */
 
 //# sourceMappingURL=isFunction.js.map
@@ -10628,9 +10626,9 @@ and limitations under the License.
 
 // alternative to using Object.keys for old browsers
 
-// Copy static methods from Buffer
-
 // Copy properties from require('buffer')
+
+// Copy static methods from Buffer
 
 /* 40 */
 
@@ -10674,6 +10672,8 @@ and limitations under the License.
 // Expose helper functions on the top level for easiest usage by common users
 
 /* 42 */
+
+/* 43 */
 
 // EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
 
@@ -11409,21 +11409,19 @@ and limitations under the License.
 
 /* concated harmony reexport zipAll */
 
-/* 43 */
-
-//# sourceMappingURL=EmptyError.js.map
-
 /* 44 */
+
+/* 45 */
 
 /** PURE_IMPORTS_START _Observable,_util_subscribeToArray,_scheduled_scheduleArray PURE_IMPORTS_END */
 
 //# sourceMappingURL=fromArray.js.map
 
-/* 45 */
-
 /* 46 */
 
 /* 47 */
+
+/* 48 */
 
 //# sourceMappingURL=Action.js.map
 
@@ -11433,13 +11431,11 @@ and limitations under the License.
 
 //# sourceMappingURL=AsyncAction.js.map
 
-/* 48 */
+/* 49 */
 
 /** PURE_IMPORTS_START _isArray PURE_IMPORTS_END */
 
 //# sourceMappingURL=isNumeric.js.map
-
-/* 49 */
 
 /* 50 */
 
@@ -11448,6 +11444,8 @@ and limitations under the License.
 /* 52 */
 
 /* 53 */
+
+/* 54 */
 
 /* fall through */
 
@@ -11459,7 +11457,7 @@ and limitations under the License.
  * [2,1] -- first tagged version
  */
 
-/* 54 */
+/* 55 */
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
@@ -11469,19 +11467,19 @@ and limitations under the License.
 
 // --- Exported API
 
-/* 55 */
-
 /* 56 */
-
-/** PURE_IMPORTS_START _of,_operators_concatAll PURE_IMPORTS_END */
 
 /* 57 */
 
-//# sourceMappingURL=hostReportError.js.map
+/** PURE_IMPORTS_START _of,_operators_concatAll PURE_IMPORTS_END */
 
 /* 58 */
 
+//# sourceMappingURL=hostReportError.js.map
+
 /* 59 */
+
+/* 60 */
 
 /*
  * For reading we support both PKCS#1 and PKCS#8. If we find a private key,
@@ -11511,7 +11509,7 @@ and limitations under the License.
 	 * off here
 	 */
 
-/* 60 */
+/* 61 */
 
 /* semi-private api, used by sshpk-agent */
 
@@ -11523,9 +11521,9 @@ and limitations under the License.
 		 * separate for other formats that don't do this.
 		 */
 
-/* 61 */
-
 /* 62 */
+
+/* 63 */
 
 /**
  * Base prompt implementation
@@ -11574,15 +11572,13 @@ and limitations under the License.
 
 // If default password is supplied, hide it
 
-/* 63 */
-
 /* 64 */
+
+/* 65 */
 
 /** PURE_IMPORTS_START _util_isScheduler,_fromArray,_scheduled_scheduleArray PURE_IMPORTS_END */
 
 //# sourceMappingURL=of.js.map
-
-/* 65 */
 
 /* 66 */
 
@@ -11592,19 +11588,19 @@ and limitations under the License.
 
 /* 69 */
 
+/* 70 */
+
 /** PURE_IMPORTS_START _noop PURE_IMPORTS_END */
 
 //# sourceMappingURL=pipe.js.map
 
-/* 70 */
+/* 71 */
 
 /* unused harmony export $$rxSubscriber */
 
-/* 71 */
-
-//# sourceMappingURL=UnsubscriptionError.js.map
-
 /* 72 */
+
+/* 73 */
 
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm5/internal/util/subscribeToArray.js
 
@@ -11616,8 +11612,6 @@ and limitations under the License.
 
 //# sourceMappingURL=subscribeTo.js.map
 
-/* 73 */
-
 /* 74 */
 
 /* 75 */
@@ -11626,53 +11620,51 @@ and limitations under the License.
 
 /* 77 */
 
+/* 78 */
+
 //# sourceMappingURL=throwError.js.map
 
-/* 78 */
+/* 79 */
 
 /* unused harmony export CombineLatestSubscriber */
 
-/* 79 */
+/* 80 */
 
 /** PURE_IMPORTS_START _mergeMap,_util_identity PURE_IMPORTS_END */
 
 //# sourceMappingURL=mergeAll.js.map
 
-/* 80 */
+/* 81 */
 
 /** PURE_IMPORTS_START _Observable,_from,_empty PURE_IMPORTS_END */
 
 //# sourceMappingURL=defer.js.map
 
-/* 81 */
+/* 82 */
 
 /* unused harmony export ZipSubscriber */
 
 /** PURE_IMPORTS_START tslib,_fromArray,_util_isArray,_Subscriber,_OuterSubscriber,_util_subscribeToResult,_.._internal_symbol_iterator PURE_IMPORTS_END */
 
-/* 82 */
+/* 83 */
 
 //# sourceMappingURL=isObject.js.map
 
-/* 83 */
+/* 84 */
 
 /** PURE_IMPORTS_START _Subscriber PURE_IMPORTS_END */
 
 //# sourceMappingURL=canReportError.js.map
 
-/* 84 */
+/* 85 */
 
 /** PURE_IMPORTS_START _Observable,_Subscription PURE_IMPORTS_END */
 
 //# sourceMappingURL=scheduleArray.js.map
 
-/* 85 */
+/* 86 */
 
 // CONCATENATED MODULE: ./node_modules/rxjs/_esm5/internal/util/Immediate.js
-
-//# sourceMappingURL=Immediate.js.map
-
-// EXTERNAL MODULE: ./node_modules/rxjs/_esm5/internal/scheduler/AsyncAction.js + 1 modules
 
 //# sourceMappingURL=AsapScheduler.js.map
 
@@ -11682,9 +11674,9 @@ and limitations under the License.
 
 //# sourceMappingURL=asap.js.map
 
-/* 86 */
-
 /* 87 */
+
+/* 88 */
 
 /* Plain hex/base64: guess it's probably SPKI unless told. */
 
@@ -11695,7 +11687,7 @@ and limitations under the License.
  * [1,2] -- hashType and spki support
  */
 
-/* 88 */
+/* 89 */
 
 // Copyright (c) 2005  Tom Wu
 
@@ -12023,7 +12015,7 @@ and limitations under the License.
 
 // An array of bytes the size of the pool will be passed to init()
 
-/* 89 */
+/* 90 */
 
 // Ported in 2014 by Dmitry Chestnykh and Devi Mandiri.
 
@@ -12080,9 +12072,9 @@ and limitations under the License.
 
 // Node.js.
 
-/* 90 */
-
 /* 91 */
+
+/* 92 */
 
 /* Private keys in pkcs#8 format have a weird extra int */
 
@@ -12117,7 +12109,7 @@ and limitations under the License.
 
 // ECParameters
 
-/* 92 */
+/* 93 */
 
 // Copyright 2016 Joyent, Inc.
 
@@ -12134,7 +12126,7 @@ and limitations under the License.
  * [1,1] -- openssh format now unpacks extensions
  */
 
-/* 93 */
+/* 94 */
 
 /*
  * These are from X.680 -- PrintableString allowed chars are in section 37.4
@@ -12159,15 +12151,15 @@ and limitations under the License.
  * [1,0] -- initial ver
  */
 
-/* 94 */
-
 /* 95 */
-
-//# sourceMappingURL=Scheduler.js.map
 
 /* 96 */
 
+//# sourceMappingURL=Scheduler.js.map
+
 /* 97 */
+
+/* 98 */
 
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
@@ -12200,7 +12192,7 @@ and limitations under the License.
    * The reverse of the above function.
    */
 
-/* 98 */
+/* 99 */
 
 // Basic Javascript Elliptic Curve implementation
 
@@ -12262,7 +12254,7 @@ and limitations under the License.
 
 // Integer division by 2, mod q
 
-/* 99 */
+/* 100 */
 
 /* cipher */
 
@@ -12272,15 +12264,15 @@ and limitations under the License.
 
 /* nkeys */
 
-/* 100 */
+/* 101 */
 
 // This file is just added for convenience so this repository can be
 
 // directly checked out into a project's deps folder
 
-/* 101 */
-
 /* 102 */
+
+/* 103 */
 
 /**
  * Separator object
@@ -12300,11 +12292,11 @@ and limitations under the License.
  * @return {Boolean}    `false` if object is a separator
  */
 
-/* 103 */
+/* 104 */
 
 /** PURE_IMPORTS_START tslib,_Subscriber,_Subscription,_Observable,_Subject PURE_IMPORTS_END */
 
-/* 104 */
+/* 105 */
 
 /**
  * Return a function that will run a function asynchronously or synchronously
@@ -12318,7 +12310,7 @@ and limitations under the License.
  *                                return a Promise (Node >= 0.12) or call the callbacks.
  */
 
-/* 105 */
+/* 106 */
 
 /**
  * The paginator keeps track of a pointer index in a list and returns
@@ -12331,7 +12323,7 @@ and limitations under the License.
 
 // Duplicate the lines so it give an infinite list look
 
-/* 106 */
+/* 107 */
 
 // EXTERNAL MODULE: ./node_modules/rxjs/_esm5/internal/Observable.js + 1 modules
 
@@ -12531,31 +12523,29 @@ and limitations under the License.
 
 /* concated harmony reexport config */
 
-/* 107 */
-
 /* 108 */
 
 /* 109 */
+
+/* 110 */
 
 /* unused harmony export ObserveOnOperator */
 
 /* unused harmony export ObserveOnMessage */
 
-/* 110 */
-
-//# sourceMappingURL=TimeoutError.js.map
-
 /* 111 */
+
+/* 112 */
 
 /** PURE_IMPORTS_START _mergeAll PURE_IMPORTS_END */
 
 //# sourceMappingURL=concatAll.js.map
 
-/* 112 */
+/* 113 */
 
 /** PURE_IMPORTS_START _Observable,_util_isScheduler,_operators_mergeAll,_fromArray PURE_IMPORTS_END */
 
-/* 113 */
+/* 114 */
 
 /* unused harmony export RaceOperator */
 
@@ -12563,13 +12553,13 @@ and limitations under the License.
 
 /** PURE_IMPORTS_START tslib,_util_isArray,_fromArray,_OuterSubscriber,_util_subscribeToResult PURE_IMPORTS_END */
 
-/* 114 */
+/* 115 */
 
 /** PURE_IMPORTS_START _Observable,_scheduler_async,_util_isNumeric,_util_isScheduler PURE_IMPORTS_END */
 
 //# sourceMappingURL=timer.js.map
 
-/* 115 */
+/* 116 */
 
 //# sourceMappingURL=schedulePromise.js.map
 
@@ -12613,7 +12603,9 @@ and limitations under the License.
 
 //# sourceMappingURL=scheduled.js.map
 
-/* 116 */
+/* 117 */
+
+// EXTERNAL MODULE: ./node_modules/rxjs/_esm5/internal/scheduler/AsyncAction.js + 1 modules
 
 //# sourceMappingURL=QueueScheduler.js.map
 
@@ -12623,25 +12615,23 @@ and limitations under the License.
 
 //# sourceMappingURL=queue.js.map
 
-/* 117 */
-
 /* 118 */
-
-//# sourceMappingURL=subscribeToArray.js.map
 
 /* 119 */
 
-//# sourceMappingURL=isArrayLike.js.map
+//# sourceMappingURL=subscribeToArray.js.map
 
 /* 120 */
 
-//# sourceMappingURL=isPromise.js.map
+//# sourceMappingURL=isArrayLike.js.map
 
 /* 121 */
 
-//# sourceMappingURL=not.js.map
+//# sourceMappingURL=isPromise.js.map
 
 /* 122 */
+
+//# sourceMappingURL=not.js.map
 
 /* 123 */
 
@@ -12651,9 +12641,11 @@ and limitations under the License.
 
 /* 126 */
 
+/* 127 */
+
 // module.parent = undefined by default
 
-/* 127 */
+/* 128 */
 
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -12680,7 +12672,7 @@ and limitations under the License.
  * // => false
  */
 
-/* 128 */
+/* 129 */
 
 // Not own constructor property must be Object
 
@@ -12708,25 +12700,25 @@ and limitations under the License.
 
 // Return the modified object
 
-/* 129 */
-
 /* 130 */
 
 /* 131 */
 
 /* 132 */
 
+/* 133 */
+
 /* top-level classes */
 
 /* errors */
 
-/* 133 */
-
 /* 134 */
+
+/* 135 */
 
 // float
 
-/* 135 */
+/* 136 */
 
 /* Generates a new ECDSA private key on a given curve. */
 
@@ -12742,7 +12734,7 @@ and limitations under the License.
 
 /* These are helpers for using ecc-jsbn (for node 0.10 compatibility). */
 
-/* 136 */
+/* 137 */
 
 // modulus and exponent
 
@@ -12750,7 +12742,7 @@ and limitations under the License.
 
 /* ecPublicKey */
 
-/* 137 */
+/* 138 */
 
 // DNSSEC generates the public-key on the fly (go calculate it)
 
@@ -12776,9 +12768,9 @@ and limitations under the License.
 
 //stringify
 
-/* 138 */
-
 /* 139 */
+
+/* 140 */
 
 /**
  * [resolve and compile the references ($ref)]
@@ -12801,17 +12793,21 @@ and limitations under the License.
 
 /* @this Ajv */
 
-/* 140 */
-
 /* 141 */
 
+// do not edit .js files directly - edit src/index.jst
+
+// true if both NaN, false otherwise
+
 /* 142 */
+
+/* 143 */
 
 // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
 
 // Copy bytes to buffer, if provided
 
-/* 143 */
+/* 144 */
 
 /*!
  * cookie
@@ -12872,21 +12868,19 @@ and limitations under the License.
  * @private
  */
 
-/* 144 */
-
 /* 145 */
 
 /* 146 */
 
-/*global exports*/
-
 /* 147 */
+
+/*global exports*/
 
 /* 148 */
 
-// the main one doesn't look that good on Ubuntu
-
 /* 149 */
+
+// The main one doesn't look that good on Ubuntu
 
 /* 150 */
 
@@ -12897,6 +12891,10 @@ and limitations under the License.
 /* 153 */
 
 /* 154 */
+
+/* 155 */
+
+/* 156 */
 
 /** `Object#toString` result references. */
 
@@ -12918,7 +12916,7 @@ and limitations under the License.
  * // => false
  */
 
-/* 155 */
+/* 157 */
 
 /**
  * The base implementation of `getTag` without fallbacks for buggy environments.
@@ -12928,11 +12926,11 @@ and limitations under the License.
  * @returns {string} Returns the `toStringTag`.
  */
 
-/* 156 */
+/* 158 */
 
 /** Built-in value references. */
 
-/* 157 */
+/* 159 */
 
 /**
  * Checks if `value` is classified as an `Array` object.
@@ -12958,11 +12956,11 @@ and limitations under the License.
  * // => false
  */
 
-/* 158 */
+/* 160 */
 
 // Adapt the sometimes-Async api of tough.CookieJar to our requirements
 
-/* 159 */
+/* 161 */
 
 /*!
  * Copyright (c) 2015, Salesforce.com, Inc.
@@ -13308,6 +13306,10 @@ and limitations under the License.
 
 // Mostly S5.1.2 and S5.2.3:
 
+// Use a closure to provide a true imperative API for synchronous stores.
+
+// wrap all declared CAN_BE_SYNC methods in the sync wrapper
+
 // S5.3 step 1
 
 // S5.3 step 2
@@ -13414,11 +13416,13 @@ and limitations under the License.
 
 // catch this mistake early:
 
-// wrap all declared CAN_BE_SYNC methods in the sync wrapper
+// Check that the store implements its own removeAllCookies(). The default
 
-// Use a closure to provide a true imperative API for synchronous stores.
+// implementation in Store will immediately call the callback with a "not
 
-/* 160 */
+// implemented" Error.
+
+/* 162 */
 
 /*!
  * Copyright (c) 2018, Salesforce.com, Inc.
@@ -13451,9 +13455,9 @@ and limitations under the License.
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* 161 */
+/* 163 */
 
-/* 162 */
+/* 164 */
 
 /*jshint unused:false */
 
@@ -13467,7 +13471,7 @@ and limitations under the License.
 
 // return this.putCookie(newCookie, cb);
 
-/* 163 */
+/* 165 */
 
 // Gives the permutation of all possible domainMatch()es of a given domain. The
 
@@ -13475,7 +13479,7 @@ and limitations under the License.
 
 // ".example.com"
 
-/* 164 */
+/* 166 */
 
 /*
  * "A request-path path-matches a given cookie-path if at least one of the
@@ -13494,9 +13498,9 @@ and limitations under the License.
 
 // is a %x2F ("/") character."
 
-/* 165 */
+/* 167 */
 
-/* 166 */
+/* 168 */
 
 // private case first
 
@@ -13504,7 +13508,7 @@ and limitations under the License.
 
 // 'domain.com. IN KEY ...' or 'domain.com. IN DNSKEY ...'
 
-/* 167 */
+/* 169 */
 
 /*
  * This file is a 1:1 port from the OpenBSD blowfish.c and bcrypt_pbkdf.c. As a
@@ -13589,7 +13593,7 @@ and limitations under the License.
 
 //"OxychromaticBlowfishSwatDynamite"
 
-/* 168 */
+/* 170 */
 
 /*
 		 * Now the magic: trying to recover the key comment when it's
@@ -13602,9 +13606,9 @@ and limitations under the License.
 
 /* Finally, grab what we think is the comment & clean it up. */
 
-/* 169 */
+/* 171 */
 
-/* 170 */
+/* 172 */
 
 /*
  * This file is based on RFC5280 (X.509).
@@ -13676,7 +13680,7 @@ and limitations under the License.
 
 // zero-filled
 
-/* 171 */
+/* 173 */
 
 /*
  * extsprintf.js: extended POSIX-style sprintf
@@ -13730,7 +13734,7 @@ and limitations under the License.
  * Public interface
  */
 
-/* 172 */
+/* 174 */
 
 /*!
  * mime-types
@@ -13799,11 +13803,11 @@ and limitations under the License.
 
 // set the extension -> mime
 
-/* 173 */
-
-/* 174 */
-
 /* 175 */
+
+/* 176 */
+
+/* 177 */
 
 // API
 
@@ -13844,7 +13848,7 @@ and limitations under the License.
 
 // return salvaged results
 
-/* 176 */
+/* 178 */
 
 /**
  * Runs provided callback asynchronously
@@ -13856,13 +13860,7 @@ and limitations under the License.
 
 // check if async happened
 
-/* 177 */
-
-/**
- * Aborts leftover active jobs
- *
- * @param {object} state - current state object
- */
+/* 179 */
 
 /**
  * Cleans up leftover job by invoking abort function for the provided job id
@@ -13871,9 +13869,15 @@ and limitations under the License.
  * @param {string|number} key - job id to abort
  */
 
+/**
+ * Aborts leftover active jobs
+ *
+ * @param {object} state - current state object
+ */
+
 // reset leftover jobs
 
-/* 178 */
+/* 180 */
 
 /**
  * Creates initial state object
@@ -13889,7 +13893,7 @@ and limitations under the License.
 
 // sort object's keys just on own merit
 
-/* 179 */
+/* 181 */
 
 /**
  * Terminates jobs in the attached state context
@@ -13904,7 +13908,7 @@ and limitations under the License.
 
 // send back results we have so far
 
-/* 180 */
+/* 182 */
 
 // Public API
 
@@ -13944,31 +13948,27 @@ and limitations under the License.
 
 // sorting helpers
 
-/* 181 */
-
-/* 182 */
-
 /* 183 */
-
-// This code was originally written by Brian White (mscdex) for the io.js core querystring library.
-
-// It has been adapted here for stricter adherence to RFC 3986
 
 /* 184 */
 
 /* 185 */
 
+// This code was originally written by Brian White (mscdex) for the io.js core querystring library.
+
+// It has been adapted here for stricter adherence to RFC 3986
+
 /* 186 */
 
 /* 187 */
 
-/* istanbul ignore else */
-
-/* istanbul ignore if */
-
 /* 188 */
 
 /* 189 */
+
+/* istanbul ignore else */
+
+/* istanbul ignore if */
 
 /* 190 */
 
@@ -13988,6 +13988,10 @@ and limitations under the License.
 
 /* 198 */
 
+/* 199 */
+
+/* 200 */
+
 //try parse the payload
 
 //return header if `complete` option is enabled.  header includes claims
@@ -13996,7 +14000,7 @@ and limitations under the License.
 
 //verify the signature
 
-/* 199 */
+/* 201 */
 
 /*global module, process*/
 
@@ -14008,19 +14012,15 @@ and limitations under the License.
 
 // or Object (assumedly a passworded key)
 
-/* 200 */
+/* 202 */
 
 // Even though we are specifying "RSA" here, this works with ECDSA
 
 // keys as well.
 
-/* 201 */
+/* 203 */
 
 /*global module*/
-
-/* 202 */
-
-/* 203 */
 
 /* 204 */
 
@@ -14031,6 +14031,10 @@ and limitations under the License.
 /* 207 */
 
 /* 208 */
+
+/* 209 */
+
+/* 210 */
 
 /* MIT license */
 
@@ -14064,7 +14068,7 @@ and limitations under the License.
 
 // handle greyscale
 
-/* 209 */
+/* 211 */
 
 /**
  * Base interface class other can inherits from
@@ -14095,7 +14099,9 @@ and limitations under the License.
 
 // Close the readline
 
-/* 210 */
+// @see https://github.com/nodejs/node/issues/21771
+
+/* 212 */
 
 /**
  * Move cursor left by `x`
@@ -14127,9 +14133,9 @@ and limitations under the License.
  * @param  {Number}   len - number of line to delete
  */
 
-/* 211 */
+/* 213 */
 
-/* 212 */
+/* 214 */
 
 /**
  * `input` type prompt
@@ -14162,73 +14168,25 @@ and limitations under the License.
 
 // If user press a key, just clear the default value
 
-/* 213 */
-
-/* 214 */
-
 /* 215 */
 
 /* 216 */
-
-//@ts-check
 
 /* 217 */
 
 /* 218 */
 
-// Use SHA-256 to derive a 32-byte key from the specified string.
-
-// NOTE: We could alternatively do some kind of key stretching here.
-
-// Returns the HMAC(text) using the derived cryptoKey
-
-// Defaults to returning the result as hex.
-
-// Encrypts an arbitrary object using the derived cryptoKey and retursn the result as text.
-
-// The object is first serialized to JSON (via JSON.stringify) and the result is encrypted.
-
-// The format of the output is:
-
-// [<hmac>]<iv><encryptedJson>
-
-// <hmac>             : Optional HMAC
-
-// <iv>               : Randomly generated initailization vector
-
-// <encryptedJson>    : The encrypted object
-
-// First generate a random IV.
-
-// AES-256 IV size is sixteen bytes:
-
-// Prepend an HMAC to the result to verify it's integrity prior to decrypting.
-
-// NOTE: We're using hex for encoding the hmac to ensure that it's of constant length
-
-// Decrypts the encrypted cipherText and returns back the original object.
-
-// If the cipherText cannot be decrypted (bad key, bad text, bad serialization) then it returns null.
-
-// NOTE: This function never throws an error. It will instead return null if it cannot decrypt the cipherText.
-
-// NOTE: It's possible that the data decrypted is null (since it's valid input for encrypt(...)).
-
-//       It's up to the caller to decide if the result is valid.
-
-// Extract the HMAC from the start of the message:
-
-// The remaining message is the IV + encrypted message:
-
-// Extract the IV from the beginning of the message:
-
-// The remaining text is the encrypted JSON:
-
-// Return the parsed object:
-
-// If we get an error log it and ignore it. Decrypting should never fail.
+//@ts-check
 
 /* 219 */
+
+/* 220 */
+
+/* 221 */
+
+/* 222 */
+
+/* 223 */
 
 /**
  * Does a constant-time Buffer comparison by not short-circuiting
@@ -14249,23 +14207,15 @@ and limitations under the License.
 
 // otherwise use our own scmp-internal function.
 
-/* 220 */
-
-/* 221 */
-
-/* 222 */
-
-/* 223 */
-
 /* 224 */
-
-// Complete slack tracking, opt out of field-type tracking and           
-
-// stabilize map                                                         
 
 /* 225 */
 
 /* 226 */
+
+// Complete slack tracking, opt out of field-type tracking and           
+
+// stabilize map                                                         
 
 /* 227 */
 
@@ -14323,11 +14273,15 @@ and limitations under the License.
 
 /* 254 */
 
+/* 255 */
+
+/* 256 */
+
 // Load Request freshly - so that users can require an unaltered request instance!
 
 /* istanbul ignore next */
 
-/* 255 */
+/* 257 */
 
 // For better minification because this string is repeating
 
@@ -14337,27 +14291,27 @@ and limitations under the License.
 
 // Exposing the Promise capabilities
 
-/* 256 */
+/* 258 */
 
 // TODO: Apply to self mimics behavior of request@2. Is that also right for request@next?
 
 // transform may return a Promise
 
-/* 257 */
+/* 259 */
 
 // legacy attribute
 
 // required for non-V8 environments
 
-/* 258 */
+/* 260 */
 
 /** Detect free variable `self`. */
 
-/* 259 */
+/* 261 */
 
 /** Detect free variable `global` from Node.js. */
 
-/* 260 */
+/* 262 */
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -14367,7 +14321,7 @@ and limitations under the License.
  * @returns {string} Returns the raw `toStringTag`.
  */
 
-/* 261 */
+/* 263 */
 
 /**
  * Used to resolve the
@@ -14383,7 +14337,7 @@ and limitations under the License.
  * @returns {string} Returns the converted string.
  */
 
-/* 262 */
+/* 264 */
 
 /**
  * Checks if `value` is the
@@ -14411,7 +14365,7 @@ and limitations under the License.
  * // => false
  */
 
-/* 263 */
+/* 265 */
 
 /**
  * Checks if `value` is classified as a `String` primitive or object.
@@ -14431,7 +14385,7 @@ and limitations under the License.
  * // => false
  */
 
-/* 264 */
+/* 266 */
 
 /**
  * Checks if `value` is `undefined`.
@@ -14451,7 +14405,7 @@ and limitations under the License.
  * // => false
  */
 
-/* 265 */
+/* 267 */
 
 // Creates a shallow copy of module.children
 
@@ -14465,7 +14419,7 @@ and limitations under the License.
 
 // In case modules to keep were required inside the stealthy require for the first time, copy them to the restored cache
 
-/* 266 */
+/* 268 */
 
 // Copyright 2010-2012 Mikeal Rogers
 
@@ -14495,7 +14449,7 @@ and limitations under the License.
 
 // Backwards compatibility for request.debug
 
-/* 267 */
+/* 269 */
 
 /*eslint no-var:0, prefer-arrow-callback: 0, object-shorthand: 0 */
 
@@ -14573,9 +14527,9 @@ and limitations under the License.
 
 // Check whether domain belongs to a known public suffix.
 
-/* 268 */
+/* 270 */
 
-/* 269 */
+/* 271 */
 
 // Since it's just a struct in RAM, this Store is synchronous
 
@@ -14595,11 +14549,13 @@ and limitations under the License.
 
 // When implementing your own store, this SHOULD retain the order too
 
-/* 270 */
-
-/* 271 */
-
 /* 272 */
+
+// generated by genversion
+
+/* 273 */
+
+/* 274 */
 
 // Return a simpler request object to allow serialization
 
@@ -14829,9 +14785,9 @@ and limitations under the License.
 
 // Stream API
 
-/* 273 */
+/* 275 */
 
-/* 274 */
+/* 276 */
 
 /*!
  *  Copyright 2010 LearnBoost <dev@learnboost.com>
@@ -14948,7 +14904,7 @@ and limitations under the License.
  * @api private
  */
 
-/* 275 */
+/* 277 */
 
 // http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html
 
@@ -14982,11 +14938,11 @@ and limitations under the License.
 
 // Services don't support empty query string keys
 
-/* 276 */
-
-/* 277 */
-
 /* 278 */
+
+/* 279 */
+
+/* 280 */
 
 ///--- Specific Errors
 
@@ -15061,11 +15017,11 @@ and limitations under the License.
 
 // were in the request, so if this passes we're good.
 
-/* 279 */
+/* 281 */
 
 // --- Exports
 
-/* 280 */
+/* 282 */
 
 // --- API
 
@@ -15103,7 +15059,7 @@ and limitations under the License.
 
 // stored in `length`
 
-/* 281 */
+/* 283 */
 
 // --- Helpers
 
@@ -15113,7 +15069,7 @@ and limitations under the License.
 
 // This is really to solve DER cases, but whatever for now
 
-/* 282 */
+/* 284 */
 
 // zero prepad
 
@@ -15131,7 +15087,7 @@ and limitations under the License.
 
 //  this.PublicKey = Buffer.from("04"+pubhex,"hex");
 
-/* 283 */
+/* 285 */
 
 // Named EC curves
 
@@ -15157,7 +15113,7 @@ and limitations under the License.
 
 // TODO: make this into a proper hashtable
 
-/* 284 */
+/* 286 */
 
 /*
 	 * We always give an issuerKey, so if our verify() is being called then
@@ -15179,9 +15135,9 @@ and limitations under the License.
 	 * isSignedBy() function will later tell you if the key matches.
 	 */
 
-/* 285 */
+/* 287 */
 
-/* 286 */
+/* 288 */
 
 /* See createSigner() */
 
@@ -15291,7 +15247,7 @@ and limitations under the License.
 
 /* This is just for unit tests. */
 
-/* 287 */
+/* 289 */
 
 /*
  * lib/jsprim.js: utilities for primitive JavaScript types
@@ -15454,7 +15410,7 @@ and limitations under the License.
 	 * Accumulate the seconds component.
 	 */
 
-/* 288 */
+/* 290 */
 
 /*
  * verror.js: richer JavaScript errors
@@ -15602,7 +15558,7 @@ and limitations under the License.
  * the cause.
  */
 
-/* 289 */
+/* 291 */
 
 // Copyright Joyent, Inc. and other Node contributors.
 
@@ -15644,7 +15600,7 @@ and limitations under the License.
 
 // ES6 symbol
 
-/* 290 */
+/* 292 */
 
 /**
  * JSONSchema Validator - Validates JavaScript objects using JSON Schemas
@@ -15722,7 +15678,7 @@ empty list will be returned. A validation error will have two properties:
 
 // result: the result returned from checkPropertyChange or validate
 
-/* 291 */
+/* 293 */
 
 /**
    * Verify RSA/DSA signature against public key.  You are expected to pass in
@@ -15758,7 +15714,7 @@ empty list will be returned. A validation error will have two properties:
 
 /* And node 0.10 lacks the .equals() method on Buffers. */
 
-/* 292 */
+/* 294 */
 
 /*!
  * mime-db
@@ -15770,9 +15726,9 @@ empty list will be returned. A validation error will have two properties:
  * Module exports.
  */
 
-/* 293 */
+/* 295 */
 
-/* 294 */
+/* 296 */
 
 // if an error happens while we don't use the socket anyway, meh, throw the socket away
 
@@ -15790,7 +15746,7 @@ empty list will be returned. A validation error will have two properties:
 
 // needs to be created to take over in the pool for the one that closed.
 
-/* 295 */
+/* 297 */
 
 /**
  * Create readable "multipart/form-data" streams.
@@ -15933,11 +15889,11 @@ empty list will be returned. A validation error will have two properties:
 
 // add content length
 
-/* 296 */
-
-/* 297 */
-
 /* 298 */
+
+/* 299 */
+
+/* 300 */
 
 /**
  * Runs iterator over provided array elements in parallel
@@ -15950,7 +15906,7 @@ empty list will be returned. A validation error will have two properties:
 
 // looks like it's the last one
 
-/* 299 */
+/* 301 */
 
 /**
  * Runs provided function on next iteration of the event loop
@@ -15958,7 +15914,7 @@ empty list will be returned. A validation error will have two properties:
  * @param {function} fn - function to run
  */
 
-/* 300 */
+/* 302 */
 
 /**
  * Runs iterator over provided array elements in series
@@ -15969,13 +15925,13 @@ empty list will be returned. A validation error will have two properties:
  * @returns {function} - jobs terminator
  */
 
-/* 301 */
+/* 303 */
 
 // populates missing values
 
-/* 302 */
+/* 304 */
 
-/* 303 */
+/* 305 */
 
 // canonicalize the hostname, so that 'oogle.com' won't match 'google.com'
 
@@ -15983,7 +15939,7 @@ empty list will be returned. A validation error will have two properties:
 
 // environmental variables (NO_PROXY, HTTP_PROXY, etc.)
 
-// respect NO_PROXY environment variables (see: http://lynx.isc.org/current/breakout/lynx_help/keystrokes/environments.html)
+// respect NO_PROXY environment variables (see: https://lynx.invisible-island.net/lynx2.8.7/breakout/lynx_help/keystrokes/environments.html)
 
 // if the noProxy is a wildcard then return null
 
@@ -15993,13 +15949,13 @@ empty list will be returned. A validation error will have two properties:
 
 // Check for HTTP or HTTPS Proxy in environment Else default to null
 
-/* 304 */
+/* 306 */
 
-/* 305 */
+/* 307 */
 
 // eslint-disable-line func-name-matching
 
-/* 306 */
+/* 308 */
 
 // Transform dot notation to bracket notation
 
@@ -16013,7 +15969,7 @@ empty list will be returned. A validation error will have two properties:
 
 // If there's a remainder, just add whatever is left
 
-/* 307 */
+/* 309 */
 
 // new property ?
 
@@ -16049,11 +16005,11 @@ empty list will be returned. A validation error will have two properties:
 
 // attempt to read from disk!
 
-/* 308 */
+/* 310 */
 
 // validator config
 
-/* 309 */
+/* 311 */
 
 /**
  * Validate data using schema
@@ -16144,7 +16100,24 @@ empty list will be returned. A validation error will have two properties:
  * @return {Object} ajv instance
  */
 
-/* 310 */
+/* 312 */
+
+/**
+ * Checks if the schema is currently compiled
+ * @this   Ajv
+ * @param  {Object} schema schema to compile
+ * @param  {Object} root root object
+ * @param  {String} baseId base schema ID
+ * @return {Object} object with properties "index" (compilation index) and "compiling" (boolean)
+ */
+
+/**
+ * Removes the schema from the currently compiled list
+ * @this   Ajv
+ * @param  {Object} schema schema to compile
+ * @param  {Object} root root object
+ * @param  {String} baseId base schema ID
+ */
 
 /**
  * Index of schema compilation in the currently compiled list
@@ -16169,24 +16142,7 @@ empty list will be returned. A validation error will have two properties:
 
 /* eslint no-shadow: 0 */
 
-/**
- * Checks if the schema is currently compiled
- * @this   Ajv
- * @param  {Object} schema schema to compile
- * @param  {Object} root root object
- * @param  {String} baseId base schema ID
- * @return {Object} object with properties "index" (compilation index) and "compiling" (boolean)
- */
-
-/**
- * Removes the schema from the currently compiled list
- * @this   Ajv
- * @param  {Object} schema schema to compile
- * @param  {Object} root root object
- * @param  {String} baseId base schema ID
- */
-
-/* 311 */
+/* 313 */
 
 /** @license URI.js v4.2.1 (c) 2011 Gary Court. License: http://github.com/garycourt/uri-js */
 
@@ -16339,20 +16295,6 @@ empty list will be returned. A validation error will have two properties:
 // Represent delta as a generalized variable-length integer.
 
 /**
-  * A string representing the current Punycode.js version number.
-  * @memberOf punycode
-  * @type String
-  */
-
-/**
-  * An object of methods to convert from JavaScript's internal character
-  * representation (UCS-2) to Unicode code points, and back.
-  * @see <https://mathiasbynens.be/notes/javascript-encoding>
-  * @memberOf punycode
-  * @type Object
-  */
-
-/**
  * Converts a basic code point into a digit/integer.
  * @see `digitToBasic()`
  * @private
@@ -16388,6 +16330,8 @@ empty list will be returned. A validation error will have two properties:
 
 //perform scheme specific parsing
 
+//normalize IP hosts, add brackets and escape zone separator for IPv6
+
 //perform scheme specific serialization
 
 //if host component is an IPv6 address
@@ -16395,8 +16339,6 @@ empty list will be returned. A validation error will have two properties:
 //convert IDN via punycode
 
 //normalize encoding
-
-//normalize IP hosts, add brackets and escape zone separator for IPv6
 
 //merge tokens into a string
 
@@ -16422,7 +16364,7 @@ empty list will be returned. A validation error will have two properties:
 
 //# sourceMappingURL=uri.all.js.map
 
-/* 312 */
+/* 314 */
 
 // https://mathiasbynens.be/notes/javascript-encoding
 
@@ -16430,13 +16372,13 @@ empty list will be returned. A validation error will have two properties:
 
 // high surrogate, and there is a next character
 
-/* 313 */
+/* 315 */
 
 // Legacy support for v0.3.1 and earlier.
 
-/* 314 */
+/* 316 */
 
-/* 315 */
+/* 317 */
 
 // full-date from http://tools.ietf.org/html/rfc3339#section-5.6
 
@@ -16474,15 +16416,11 @@ empty list will be returned. A validation error will have two properties:
 
 // https://tools.ietf.org/html/rfc1123#section-2
 
-/* 316 */
-
-/* 317 */
-
-//all requires must be explicit because browserify won't work with dynamic requires
-
 /* 318 */
 
 /* 319 */
+
+//all requires must be explicit because browserify won't work with dynamic requires
 
 /* 320 */
 
@@ -16522,6 +16460,10 @@ empty list will be returned. A validation error will have two properties:
 
 /* 338 */
 
+/* 339 */
+
+/* 340 */
+
 /**
  * Creates validating function for passed schema with asynchronous loading of missing schemas.
  * `loadSchema` option should be a function that accepts schema uri and returns promise that resolves with the schema.
@@ -16534,7 +16476,7 @@ empty list will be returned. A validation error will have two properties:
 
 /* global Promise */
 
-/* 339 */
+/* 341 */
 
 /**
  * Define custom keyword
@@ -16565,10 +16507,6 @@ empty list will be returned. A validation error will have two properties:
  * @param {Boolean} throwError true to throw exception if definition is invalid
  * @return {boolean} validation result
  */
-
-/* 340 */
-
-/* 341 */
 
 /* 342 */
 
@@ -16614,6 +16552,12 @@ empty list will be returned. A validation error will have two properties:
 
 /* 363 */
 
+/* 364 */
+
+/* 365 */
+
+/* 366 */
+
 // define all public properties here
 
 // TODO: More complete implementation of RFC 2617.
@@ -16643,13 +16587,13 @@ empty list will be returned. A validation error will have two properties:
    *   HA1=MD5(MD5(username:realm:password):nonce:cnonce)
    */
 
-/* 364 */
+/* 367 */
 
 // Unique ID creation requires a high quality random # generator.  In node.js
 
 // this is pretty straight-forward - we use the crypto API.
 
-/* 365 */
+/* 368 */
 
 /**
  * Convert array of 16 byte values to UUID string format of the form:
@@ -16658,11 +16602,11 @@ empty list will be returned. A validation error will have two properties:
 
 // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
 
-/* 366 */
+/* 369 */
 
 // eslint-disable-line camelcase
 
-/* 367 */
+/* 370 */
 
 // Maps object to bi-dimensional array
 
@@ -16680,11 +16624,11 @@ empty list will be returned. A validation error will have two properties:
 
 // http://tools.ietf.org/html/rfc5849#section-3.4.1.3.2
 
-/* 368 */
+/* 371 */
 
-/* 369 */
+/* 372 */
 
-/* 370 */
+/* 373 */
 
 // Do not follow redirects
 
@@ -16708,7 +16652,7 @@ empty list will be returned. A validation error will have two properties:
 
 // https://github.com/bagder/curl/blob/6beb0eee/lib/http.c#L710
 
-/* 371 */
+/* 374 */
 
 // Tunnel HTTPS by default. Allow the user to override this setting.
 
@@ -16720,7 +16664,7 @@ empty list will be returned. A validation error will have two properties:
 
 // Set Agent from Tunnel Data
 
-/* 372 */
+/* 375 */
 
 // Detect the request to connect same origin server,
 
@@ -16742,13 +16686,13 @@ empty list will be returned. A validation error will have two properties:
 
 // for v0.7 or later
 
-/* 373 */
+/* 376 */
 
 // Generated by CoffeeScript 1.12.2
 
 //# sourceMappingURL=performance-now.js.map
 
-/* 374 */
+/* 377 */
 
 // We're being used in a Node-like environment
 
@@ -16814,7 +16758,7 @@ Helper functions
 
 // Are we being used in a Node-like environment?
 
-/* 375 */
+/* 378 */
 
 // wrapper for non-node envs
 
@@ -17022,15 +16966,15 @@ Helper functions
 
 // http://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
 
-/* 376 */
-
-/* 377 */
-
-/* 378 */
-
 /* 379 */
 
 /* 380 */
+
+/* 381 */
+
+/* 382 */
+
+/* 383 */
 
 //signature
 
@@ -17074,7 +17018,7 @@ Helper functions
 
 //session key security buffer
 
-/* 381 */
+/* 384 */
 
 /* Indicates that Unicode strings are supported for use in security buffer
    data. */
@@ -17150,7 +17094,7 @@ Helper functions
 /* Indicates that the client will provide an encrypted master key in
    the "Session Key" field of the Type 3 message. */
 
-/* 382 */
+/* 385 */
 
 //server challenge
 
@@ -17178,12 +17122,6 @@ Helper functions
 
 //complete target information block from type 2 message
 
-/* 383 */
-
-/* 384 */
-
-/* 385 */
-
 /* 386 */
 
 /* 387 */
@@ -17193,6 +17131,12 @@ Helper functions
 /* 389 */
 
 /* 390 */
+
+/* 391 */
+
+/* 392 */
+
+/* 393 */
 
 /*jshint node:true */
 
@@ -17210,7 +17154,7 @@ Helper functions
 
 // XOR
 
-/* 391 */
+/* 394 */
 
 // the DER encoded param should at most be the param size, plus a padding
 
@@ -17226,15 +17170,15 @@ Helper functions
 
 // length, base 256
 
-/* 392 */
+/* 395 */
 
-/* 393 */
+/* 396 */
 
-/* 394 */
+/* 397 */
 
 //clone this object since we are going to mutate it.
 
-/* 395 */
+/* 398 */
 
 /**
  * Helpers.
@@ -17282,7 +17226,7 @@ Helper functions
  * @api private
  */
 
-/* 396 */
+/* 399 */
 
 // Note: this is the semver.org version of the spec that it implements
 
@@ -17570,9 +17514,9 @@ Helper functions
 
 // Determine if version is greater than all the versions possible in the range.
 
-/* 397 */
+/* 400 */
 
-/* 398 */
+/* 401 */
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -17975,7 +17919,7 @@ Helper functions
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
 
-/* 399 */
+/* 402 */
 
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
@@ -18027,7 +17971,7 @@ Helper functions
  * // => false
  */
 
-/* 400 */
+/* 403 */
 
 /**
  * Checks if `value` is an integer.
@@ -18056,7 +18000,7 @@ Helper functions
  * // => false
  */
 
-/* 401 */
+/* 404 */
 
 /**
  * Checks if `value` is classified as a `Number` primitive or object.
@@ -18084,15 +18028,7 @@ Helper functions
  * // => false
  */
 
-/* 402 */
-
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
+/* 405 */
 
 /** Used to resolve the decompiled source of functions. */
 
@@ -18125,11 +18061,19 @@ Helper functions
  * // => true
  */
 
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+
 // Many host objects are `Object` objects that can coerce to strings
 
 // despite having improperly defined `toString` methods.
 
-/* 403 */
+/* 406 */
 
 /**
  * lodash 4.0.1 (Custom Build) <https://lodash.com/>
@@ -18157,7 +18101,7 @@ Helper functions
  * // => false
  */
 
-/* 404 */
+/* 407 */
 
 /** Used as the `TypeError` message for "Functions" methods. */
 
@@ -18198,17 +18142,17 @@ Helper functions
  * // => `createApplication` is invoked once
  */
 
-/* 405 */
-
-/* 406 */
-
-/* 407 */
-
 /* 408 */
 
 /* 409 */
 
 /* 410 */
+
+/* 411 */
+
+/* 412 */
+
+/* 413 */
 
 // In the case of any other error, just see if there's a dir
 
@@ -18220,11 +18164,11 @@ Helper functions
 
 // let the original error be the failure reason.
 
-/* 411 */
+/* 414 */
 
-/* 412 */
+/* 415 */
 
-/* 413 */
+/* 416 */
 
 // Make the export immutable
 
@@ -18234,7 +18178,7 @@ Helper functions
 
 // Fix humans
 
-/* 414 */
+/* 417 */
 
 // we're assuming the result is an array here.
 
@@ -18244,9 +18188,9 @@ Helper functions
 
 // preserve .conversion property if there is one
 
-/* 415 */
+/* 418 */
 
-/* 416 */
+/* 419 */
 
 /*
 	this function routes a model to all other models.
@@ -18269,7 +18213,7 @@ Helper functions
 
 // unshift -> queue -> pop
 
-/* 417 */
+/* 420 */
 
 // Node.js 7.5.0 is the first version of Node.js to include a patch to
 
@@ -18285,13 +18229,13 @@ Helper functions
 
 // No default
 
-/* 418 */
+/* 421 */
 
-/* 419 */
+/* 422 */
 
 // eslint-disable-next-line max-params
 
-/* 420 */
+/* 423 */
 
 /**
  * Sticky bottom bar user interface
@@ -18331,7 +18275,7 @@ Helper functions
 /* When it's a tty through serial port there's no terminal info and the render will malfunction,
          so we need enforce the cursor to locate to the leftmost position for rendering. */
 
-/* 421 */
+/* 424 */
 
 // through
 
@@ -18361,7 +18305,7 @@ Helper functions
 
 //as drain emits 'data'.
 
-/* 422 */
+/* 425 */
 
 // var out = new MuteStream(process.stdout)
 
@@ -18375,9 +18319,11 @@ Helper functions
 
 // basically just get replace the getter/setter with a regular value
 
-/* 423 */
+/* 426 */
 
-/* 424 */
+/* 427 */
+
+// TODO: remove this in the next major version
 
 // 1. Erases the screen (Only done in case `2` is not supported)
 
@@ -18387,7 +18333,7 @@ Helper functions
 
 // More info: https://www.real-world-systems.com/docs/ANSIcode.html
 
-/* 425 */
+/* 428 */
 
 // Keep global reference to the answers
 
@@ -18405,9 +18351,9 @@ Helper functions
 
 // Default type to input
 
-/* 426 */
+/* 429 */
 
-/* 427 */
+/* 430 */
 
 /**
  * Resolve a question property value if it is passed as a function.
@@ -18418,7 +18364,7 @@ Helper functions
  * @return {Rx.Observable}   - Observable emitting once value is known
  */
 
-/* 428 */
+/* 431 */
 
 /**
  * `list` type prompt
@@ -18447,17 +18393,15 @@ Helper functions
  * @return {String}         Rendered content
  */
 
-/* 429 */
-
-/* 430 */
-
-// TODO: Remove this in v3
-
-/* 431 */
-
-// TODO: use `Reflect.ownKeys()` when targeting Node.js 6
-
 /* 432 */
+
+/* 433 */
+
+// TODO: Remove this for the next major release
+
+/* 434 */
+
+/* 435 */
 
 // Note: since nyc uses this module to output coverage, any lines
 
@@ -18483,7 +18427,7 @@ Helper functions
 
 // handle it instead of us.
 
-/* 433 */
+/* 436 */
 
 // This is not the set of all possible signals.
 
@@ -18517,7 +18461,7 @@ Helper functions
 
 // listeners.
 
-/* 434 */
+/* 437 */
 
 /**
  * Choices collection
@@ -18552,7 +18496,7 @@ Helper functions
 
 // Expose usual Array methods
 
-/* 435 */
+/* 438 */
 
 /**
  * Choice object
@@ -18564,7 +18508,7 @@ Helper functions
 
 // Don't process Choice and Separator object
 
-/* 436 */
+/* 439 */
 
 // These variables are keeping information to allow correct prompt re-rendering
 
@@ -18602,15 +18546,15 @@ Helper functions
 
 // Last match is always empty
 
-/* 437 */
-
-/* 438 */
-
-/* 439 */
-
 /* 440 */
 
 /* 441 */
+
+/* 442 */
+
+/* 443 */
+
+/* 444 */
 
 // Ignore control characters
 
@@ -18618,11 +18562,11 @@ Helper functions
 
 // Surrogates
 
-/* 442 */
+/* 445 */
 
-/* 443 */
+/* 446 */
 
-/* 444 */
+/* 447 */
 
 /* eslint-disable yoda */
 
@@ -18656,7 +18600,11 @@ Helper functions
 
 // CJK Unified Ideographs Extension B .. Tertiary Ideographic Plane
 
-/* 445 */
+/* 448 */
+
+// https://mths.be/emoji
+
+/* 449 */
 
 /**
  * Extention of the Input prompt specifically for use with number inputs.
@@ -18668,7 +18616,7 @@ Helper functions
 
 // If the input was invalid return the default value.
 
-/* 446 */
+/* 450 */
 
 /**
  * `confirm` type prompt
@@ -18685,7 +18633,7 @@ Helper functions
    * @return {ConfirmPrompt} self
    */
 
-/* 447 */
+/* 451 */
 
 /**
  * `rawlist` type prompt
@@ -18709,7 +18657,7 @@ Helper functions
    * @param {String} type Arrow type: up or down
    */
 
-/* 448 */
+/* 452 */
 
 // Add the default `help` (/expand) option
 
@@ -18745,7 +18693,7 @@ Helper functions
  * @return {String}         Rendered content
  */
 
-/* 449 */
+/* 453 */
 
 /**
    * Render the prompt to screen
@@ -18760,7 +18708,7 @@ Helper functions
  * @return {String}         Rendered content
  */
 
-/* 450 */
+/* 454 */
 
 /**
  * `password` type prompt
@@ -18771,7 +18719,7 @@ Helper functions
    * @return {PasswordPrompt} self
    */
 
-/* 451 */
+/* 455 */
 
 /**
  * `editor` type prompt
@@ -18794,7 +18742,7 @@ Helper functions
 
 // Pause Readline to prevent stdin and stdout from being modified while the editor is showing
 
-/* 452 */
+/* 456 */
 
 /***
  * Node External Editor
@@ -18807,13 +18755,13 @@ Helper functions
 
 // Probably a bad idea, but will at least prevent crashing
 
-/* 453 */
+/* 457 */
 
 // Tally up the byte occurence statistics.
 
 // Wrappers for the previous functions to return all encodings
 
-/* 454 */
+/* 458 */
 
 /**
  * Charset recognizer for UTF-8
@@ -18835,7 +18783,7 @@ Helper functions
 
 // Probably corruput utf-8 data.  Valid sequences aren't likely by chance.
 
-/* 455 */
+/* 459 */
 
 /**
  * This class matches UTF-16 and UTF-32, both big- and little-endian. The
@@ -18854,17 +18802,11 @@ Helper functions
 
 // Probably corrupt UTF-32BE data.  Valid sequences aren't likely by chance.
 
-/* 456 */
+/* 460 */
 
 /**
  * Binary search implementation (recursive)
  */
-
-/*
-    int mid = mid = (left + right) / 2;
-    There is a bug in the above line;
-    Joshua Bloch suggests the following replacement:
-    */
 
 // 'Character'  iterated character class.
 
@@ -18935,6 +18877,12 @@ Helper functions
  */
 
 //TODO Do we really need this?
+
+/*
+    int mid = mid = (left + right) / 2;
+    There is a bug in the above line;
+    Joshua Bloch suggests the following replacement:
+    */
 
 // console.log('its here!')
 
@@ -19015,7 +18963,7 @@ Helper functions
 
 // Four byte char
 
-/* 457 */
+/* 461 */
 
 /**
  * This class recognizes single-byte encodings. Because the encoding scheme is so
@@ -19034,7 +18982,7 @@ Helper functions
 
 // were we were getting a confidence of 135...
 
-/* 458 */
+/* 462 */
 
 /**
  * This is a superclass for the individual detectors for
@@ -19109,7 +19057,7 @@ Helper functions
 
 // SS2
 
-/* 459 */
+/* 463 */
 
 // Some environments don't have global Buffer (e.g. React Native).
 
@@ -19153,11 +19101,11 @@ Helper functions
 
 // Load Node primitive extensions.
 
-/* 460 */
+/* 464 */
 
 //------------------------------------------------------------------------------
 
-/* 461 */
+/* 465 */
 
 // Update this array if you add/rename/remove files in this directory.
 
@@ -19165,7 +19113,7 @@ Helper functions
 
 // Put all encoding/alias/codec definitions to single object and export it. 
 
-/* 462 */
+/* 466 */
 
 // Export Node.js internal encodings.
 
@@ -19215,7 +19163,7 @@ Helper functions
 
 // Unexpected continuation byte
 
-/* 463 */
+/* 467 */
 
 // Note: UTF16-LE (or UCS2) codec is Node.js native. See encodings/internal.js
 
@@ -19261,7 +19209,7 @@ Helper functions
 
 // We have enough bytes -> detect endianness.
 
-/* 464 */
+/* 468 */
 
 // UTF-7 codec, according to https://tools.ietf.org/html/rfc2152
 
@@ -19333,7 +19281,7 @@ Helper functions
 
 // Write direct chars until '&'
 
-/* 465 */
+/* 469 */
 
 // Single-byte codec. Needs a 'chars' string parameter that contains 256 or 128 chars that
 
@@ -19345,7 +19293,7 @@ Helper functions
 
 // Strings are immutable in JS -> we use ucs2 buffer to speed up computations.
 
-/* 466 */
+/* 470 */
 
 // Manually added data to be used by sbcs codec in addition to generated one.
 
@@ -19353,11 +19301,11 @@ Helper functions
 
 // Aliases of generated encodings.
 
-/* 467 */
+/* 471 */
 
 // Generated data for sbcs codec. Don't edit manually. Regenerate using generation/gen-sbcs.js script.
 
-/* 468 */
+/* 472 */
 
 // Multibyte codec. In this scheme, a character is represented by 1 or more bytes.
 
@@ -19557,7 +19505,7 @@ Helper functions
 
 // Parse remaining as usual.
 
-/* 469 */
+/* 473 */
 
 // Description of supported double byte encodings and aliases.
 
@@ -19699,17 +19647,17 @@ Helper functions
 
 // Big5 has many variations and is an extension of cp950. We use Encoding Standard's as a consensus.
 
-/* 470 */
-
-/* 471 */
-
-/* 472 */
-
-/* 473 */
-
 /* 474 */
 
 /* 475 */
+
+/* 476 */
+
+/* 477 */
+
+/* 478 */
+
+/* 479 */
 
 // == Exports ==================================================================
 
@@ -19725,7 +19673,7 @@ Helper functions
 
 // Not published yet.
 
-/* 476 */
+/* 480 */
 
 // Note: not polyfilled with safer-buffer on a purpose, as overrides Buffer
 
@@ -19767,7 +19715,7 @@ Helper functions
 
 // Remove iconv-lite Node primitive extensions.
 
-/* 477 */
+/* 481 */
 
 /*!
  * Tmp
@@ -19787,10 +19735,6 @@ Helper functions
    */
 
 // the random characters to choose from
-
-/* 0o700 */
-
-/* 0o600 */
 
 // this will hold the objects need to be removed on exit
 
@@ -20025,6 +19969,8 @@ Helper functions
 
 // create the directory
 
+/* 0o700 */
+
 /**
  * Synchronous version of dir.
  *
@@ -20034,6 +19980,8 @@ Helper functions
  */
 
 // create and open the file
+
+/* 0o600 */
 
 // Low probability, and the file exists, so this could be
 
@@ -20051,11 +19999,11 @@ Helper functions
  * @throws {Error} if cannot create a file
  */
 
-/* 478 */
+/* 482 */
 
 // https://github.com/nodejs/node/blob/3e7a14381497a3b73dda68d05b5130563cdab420/lib/os.js#L25-L43
 
-/* 479 */
+/* 483 */
 
 /***
  * Node External Editor
@@ -20063,14 +20011,6 @@ Helper functions
  * Kevin Gravier <kevin@mrkmg.com>
  * MIT 2018
  */
-
-/* 480 */
-
-/* 481 */
-
-/* 482 */
-
-/* 483 */
 
 /* 484 */
 
@@ -20097,6 +20037,14 @@ Helper functions
 /* 495 */
 
 /* 496 */
+
+/* 497 */
+
+/* 498 */
+
+/* 499 */
+
+/* 500 */
 
 // ([^\s'"]+(['"])([^\2]*?)\2) Match `text"quotes text"`
 
