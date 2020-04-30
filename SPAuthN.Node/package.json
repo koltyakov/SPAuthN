@@ -4,7 +4,9 @@
   "description": "SPAuthN - SharePoint .Net auth with Node.js",
   "main": "SPAuthN.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "repository": {
@@ -20,7 +22,8 @@
   "dependencies": {
     "cpass": "^2.2.0",
     "node-sp-auth-config": "^2.9.2",
-    "string-argv": "0.1.2"
+    "string-argv": "0.1.2",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "imports-loader": "^0.8.0",
@@ -28,5 +31,6 @@
     "terser-webpack-plugin": "^2.3.5",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11"
-  }
+  },
+  "snyk": true
 }
